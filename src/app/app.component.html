@@ -1,0 +1,87 @@
+<div class="dashboard-container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-badge">ADEV</div>
+      <h1>ADEV-GC System</h1>
+    </div>
+    <span class="env-badge">Ambiente de Desenvolvimento</span>
+  </header>
+
+  <main class="content">
+    <section class="welcome-card">
+      <h2>Painel de Integração</h2>
+      <p>Todas as configurações básicas do Front-end (Angular 17), Back-end (.NET 8) e Banco de Dados (PostgreSQL Docker) foram configuradas.</p>
+    </section>
+
+    <div class="grid">
+      <!-- Front-end Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="status-indicator online"></div>
+          <h3>Front-end (Angular 17)</h3>
+        </div>
+        <p class="card-desc">Aplicação Standalone com Roteamento e HttpClient configurados.</p>
+        <div class="card-details">
+          <span><strong>Porta:</strong> 4200</span>
+          <span class="badge success">Pronto</span>
+        </div>
+      </div>
+
+      <!-- Back-end Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="status-indicator" [ngClass]="{'online': apiStatus, 'pending': !apiStatus && !errorMessage, 'offline': errorMessage}"></div>
+          <h3>Back-end (.NET 8 Web API)</h3>
+        </div>
+        <p class="card-desc">CORS habilitado, Entity Framework Core e Npgsql configurados.</p>
+        <div class="card-details">
+          <span><strong>Status API:</strong> {{ apiStatus ? apiStatus.api : (loading ? 'Testando...' : 'Aguardando API') }}</span>
+          <span class="badge" [ngClass]="apiStatus ? 'success' : 'warning'">{{ apiStatus ? 'Online' : 'Parado / Não iniciado' }}</span>
+        </div>
+        <div class="card-action">
+          <a href="http://localhost:5001/swagger" target="_blank" class="link-btn">Abrir Swagger API &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Banco de Dados Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="status-indicator online"></div>
+          <h3>Banco de Dados (PostgreSQL)</h3>
+        </div>
+        <p class="card-desc">Container Docker rodando na porta padrão com volume persistente.</p>
+        <div class="card-details">
+          <span><strong>Host:</strong> localhost:5432</span>
+          <span><strong>Database:</strong> adev_gc_db</span>
+        </div>
+        <div class="card-action">
+          <a href="http://localhost:5050" target="_blank" class="link-btn">Abrir pgAdmin (Web) &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diagnostic and Test section -->
+    <section class="test-panel">
+      <h3>Teste de Comunicação Front ➔ Back ➔ Banco</h3>
+      <div class="test-content">
+        <button class="btn-primary" (click)="checkApi()" [disabled]="loading">
+          {{ loading ? 'Verificando conexão...' : 'Verificar Conexão Agora' }}
+        </button>
+
+        @if (apiStatus) {
+          <div class="alert alert-success">
+            <strong>Sucesso!</strong> Resposta da API: <em>{{ apiStatus.database }}</em> às {{ apiStatus.timestamp | date:'HH:mm:ss' }}.
+          </div>
+        }
+
+        @if (errorMessage) {
+          <div class="alert alert-info">
+            <strong>Dica:</strong> Inicie a API .NET (execute <code>dotnet run</code> na pasta <code>adev-gc-api/adev-gc-api</code>) e clique no botão acima para confirmar a comunicação.
+          </div>
+        }
+      </div>
+    </section>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
