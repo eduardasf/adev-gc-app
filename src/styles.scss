@@ -1,1 +1,96 @@
-/* You can add global styles to this file, and also import other style files */
+// Fontes locais (npm @fontsource)
+@import '@fontsource/poppins/300.css';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+@import '@fontsource/iosevka-charon/index.css';
+
+//Cores base
+$primary: #1E90FF;
+$secondary: #FFD700;
+$success: #32CD32;
+$danger: #DC143C;
+$light: #F5F5F5;
+$dark: #333333;
+    
+$navy_blue: #13253a;
+$yellow: #F7B728;
+$gray: #F6F6F6;
+
+.border-navy {
+  border-color: $navy_blue !important;
+}
+
+//Fontes
+$font-family-poppins: 'Poppins', sans-serif;
+$font-family-inter: 'Inter', sans-serif;
+$font-family-iosevka: 'Iosevka Charon', monospace;
+$font-family-base: $font-family-inter;
+
+// Tipografia padrão
+html, body {
+  font-family: $font-family-base;
+  color: $navy_blue;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-poppins;
+  color: $navy_blue;
+}
+
+code, pre, kbd, samp {
+  font-family: $font-family-iosevka;
+}
+
+// Classes utilitárias de fonte
+.font-poppins {
+  font-family: $font-family-poppins !important;
+}
+
+.font-inter {
+  font-family: $font-family-inter !important;
+}
+
+.font-code,
+.font-iosevka {
+  font-family: $font-family-iosevka !important;
+}
+
+// Classes utilitárias de cor de texto
+.text-primary   { color: $primary !important; }
+.text-secondary { color: $secondary !important; }
+.text-success   { color: $success !important; }
+.text-danger    { color: $danger !important; }
+.text-navy      { color: $navy_blue !important; }
+.text-yellow    { color: $yellow !important; }
+.text-light     { color: $light !important; }
+.text-dark      { color: $dark !important; }
+.text-gray      { color: $gray !important; }
+
+// Classes utilitárias de cor de fundo
+.bg-primary   { background-color: $primary !important; }
+.bg-secondary { background-color: $secondary !important; }
+.bg-success   { background-color: $success !important; }
+.bg-danger    { background-color: $danger !important; }
+.bg-navy      { background-color: $navy_blue !important; }
+.bg-yellow    { background-color: $yellow !important; }
+.bg-light     { background-color: $light !important; }
+.bg-dark      { background-color: $dark !important; }
+.bg-gray      { background-color: $gray !important; }
+
+body {
+  background-color: $gray;
+  color: $navy_blue;
+  margin: 0;
+  padding: 0;
+}
+
+

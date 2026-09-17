@@ -1,0 +1,219 @@
+$navy_blue: #13253a;
+$yellow: #F7B728;
+$gray: #F6F6F6;
+
+.layout-wrapper {
+  min-height: 100vh;
+}
+
+.layout-header {
+  width: 100%;
+  background-color: transparent;
+  z-index: 1000;
+  position: relative;
+}
+
+.layout-main {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.layout-footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+.nome_logo {
+  img {
+    height: auto;
+    max-width: 55px;
+  }
+
+  .border-start {
+    border-color: $navy_blue !important;
+  }
+
+  @media (max-width: 576px) {
+    img {
+      max-width: 45px;
+    }
+
+    p.fs-5 {
+      font-size: 1.05rem !important;
+    }
+
+    p:not(.fs-5) {
+      font-size: 0.85rem !important;
+    }
+  }
+}
+
+// Botão Hambúrguer
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1.5px solid rgba(19, 37, 58, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1050;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus {
+    border-color: $navy_blue;
+    outline: none;
+  }
+
+  .bar {
+    width: 100%;
+    height: 2px;
+    background-color: $navy_blue;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+
+    &:nth-child(1).open {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    &:nth-child(2).open {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    &:nth-child(3).open {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+// Navegação
+.nav-container {
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: $navy_blue;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, background-color 0.2s ease;
+      padding: 0.25rem 0;
+
+      &:hover,
+      &:active,
+      &.active {
+        color: $yellow !important;
+        font-weight: 600;
+      }
+    }
+
+    .btn-entrar {
+      padding: 0.45rem 1.35rem;
+      border-radius: 8px;
+      background-color: $navy_blue;
+      color: #ffffff !important;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-block;
+      text-align: center;
+
+      &:hover,
+      &:active,
+      &.active {
+        background-color: $yellow;
+        color: $navy_blue !important;
+      }
+    }
+  }
+}
+
+// Estilos Mobile (telas menores que 992px)
+@media (max-width: 991.98px) {
+  .nav-container {
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    right: 1rem;
+    background-color: #ffffff;
+    border: 1px solid rgba(19, 37, 58, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(19, 37, 58, 0.12);
+    padding: 1.25rem 1.5rem;
+    z-index: 1040;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+
+    &.open {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+
+      li {
+        width: 100%;
+      }
+
+      a:not(.btn-entrar) {
+        width: 100%;
+        display: block;
+        padding: 0.65rem 0.75rem;
+        border-radius: 8px;
+        font-size: 1rem;
+
+        &:hover,
+        &:active,
+        &.active {
+          background-color: rgba(247, 183, 40, 0.12);
+        }
+      }
+
+      .li-entrar {
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(19, 37, 58, 0.08);
+
+        .btn-entrar {
+          width: 100%;
+          padding: 0.65rem 1rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  // Backdrop escurecido ao abrir o menu mobile
+  .mobile-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(19, 37, 58, 0.35);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+  }
+}
+
+
+

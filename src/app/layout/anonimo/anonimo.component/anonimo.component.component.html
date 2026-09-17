@@ -1,0 +1,104 @@
+<div class="layout-wrapper d-flex flex-column min-vh-100">
+  <header class="layout-header">
+    <div class="container d-flex align-items-center justify-content-between py-2 py-md-3 position-relative">
+      <div class="d-flex align-items-center gap-2 nome_logo">
+        <img
+          width="55"
+          src="assets/img/logo-peixe-preto.png"
+          alt="Logo ADEV Grande Colorado"
+        />
+
+        <div class="border-2 border-start ps-2 border-navy">
+          <p class="mb-0 fs-5 fw-semibold font-poppins text-navy">ADEV</p>
+          <p class="mb-0 fw-semibold font-poppins text-navy">
+            Grande Colorado
+          </p>
+        </div>
+      </div>
+
+      <!-- Botão Hambúrguer para Mobile -->
+      <button
+        class="menu-toggle d-lg-none"
+        type="button"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen"
+        aria-label="Abrir menu de navegação"
+      >
+        <span class="bar" [class.open]="isMenuOpen"></span>
+        <span class="bar" [class.open]="isMenuOpen"></span>
+        <span class="bar" [class.open]="isMenuOpen"></span>
+      </button>
+
+      <!-- Menu de Navegação -->
+      <nav class="nav-container" [class.open]="isMenuOpen">
+        <ul class="nav-links d-flex align-items-center mb-0">
+          <li>
+            <a
+              routerLink="/"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="closeMenu()"
+              >Início</a
+            >
+          </li>
+          <li>
+            <a routerLink="/sobre" routerLinkActive="active" (click)="closeMenu()"
+              >Sobre</a
+            >
+          </li>
+          <li>
+            <a routerLink="/eventos" routerLinkActive="active" (click)="closeMenu()"
+              >Eventos</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/ministerios"
+              routerLinkActive="active"
+              (click)="closeMenu()"
+              >Ministérios</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/contribua"
+              routerLinkActive="active"
+              (click)="closeMenu()"
+              >Contribua</a
+            >
+          </li>
+          <li>
+            <a routerLink="/contato" routerLinkActive="active" (click)="closeMenu()"
+              >Contato</a
+            >
+          </li>
+          <li class="li-entrar">
+            <a
+              routerLink="/entrar"
+              routerLinkActive="active"
+              class="btn-entrar"
+              (click)="closeMenu()"
+              >Entrar</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  @if (isMenuOpen) {
+    <div class="mobile-backdrop d-lg-none" (click)="closeMenu()"></div>
+  }
+
+  <main class="layout-main flex-grow-1">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <footer class="layout-footer w-100">
+    <div class="container py-4">
+      <!-- Conteúdo do rodapé -->
+    </div>
+  </footer>
+</div>
