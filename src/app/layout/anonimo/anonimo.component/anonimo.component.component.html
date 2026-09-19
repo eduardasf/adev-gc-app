@@ -1,20 +1,22 @@
 <div class="layout-wrapper d-flex flex-column min-vh-100">
   <header class="layout-header">
-    <div class="container d-flex align-items-center justify-content-between py-2 py-md-3 position-relative">
-      <div class="d-flex align-items-center gap-2 nome_logo">
+    <div
+      class="container d-flex align-items-center justify-content-between py-2 py-md-4 position-relative"
+    >
+      <a routerLink="/" class="brand-link d-flex align-items-center gap-3 text-decoration-none">
         <img
-          width="55"
           src="assets/img/logo-peixe-preto.png"
           alt="Logo ADEV Grande Colorado"
+          class="brand-logo"
         />
 
-        <div class="border-2 border-start ps-2 border-navy">
-          <p class="mb-0 fs-5 fw-semibold font-poppins text-navy">ADEV</p>
-          <p class="mb-0 fw-semibold font-poppins text-navy">
-            Grande Colorado
-          </p>
+        <div class="brand-divider"></div>
+
+        <div class="brand-text d-flex flex-column justify-content-center">
+          <span class="brand-title font-poppins">ADEV</span>
+          <span class="brand-subtitle font-poppins">GRANDE COLORADO</span>
         </div>
-      </div>
+      </a>
 
       <!-- Botão Hambúrguer para Mobile -->
       <button
@@ -42,12 +44,18 @@
             >
           </li>
           <li>
-            <a routerLink="/sobre" routerLinkActive="active" (click)="closeMenu()"
+            <a
+              routerLink="/sobre"
+              routerLinkActive="active"
+              (click)="closeMenu()"
               >Sobre</a
             >
           </li>
           <li>
-            <a routerLink="/eventos" routerLinkActive="active" (click)="closeMenu()"
+            <a
+              routerLink="/eventos"
+              routerLinkActive="active"
+              (click)="closeMenu()"
               >Eventos</a
             >
           </li>
@@ -68,7 +76,10 @@
             >
           </li>
           <li>
-            <a routerLink="/contato" routerLinkActive="active" (click)="closeMenu()"
+            <a
+              routerLink="/contato"
+              routerLinkActive="active"
+              (click)="closeMenu()"
               >Contato</a
             >
           </li>
@@ -76,13 +87,21 @@
             <a
               routerLink="/entrar"
               routerLinkActive="active"
-              class="btn-entrar"
               (click)="closeMenu()"
               >Entrar</a
             >
           </li>
         </ul>
       </nav>
+    </div>
+    <div>
+      <div class="w-100">
+        <img
+          src="assets/img/banner2.png"
+          alt="Paisagem com uma cruz"
+          class="w-100 d-block object-fit-cover"
+        />
+      </div>
     </div>
   </header>
 

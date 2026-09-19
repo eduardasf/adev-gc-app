@@ -23,27 +23,79 @@ $gray: #F6F6F6;
   margin-top: auto;
 }
 
-.nome_logo {
-  img {
-    height: auto;
-    max-width: 55px;
+// Logo
+.brand-link {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
   }
 
-  .border-start {
-    border-color: $navy_blue !important;
+  .brand-logo {
+    width: 48px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .brand-logo {
+    transform: scale(1.04);
+  }
+
+  .brand-divider {
+    width: 2px;
+    height: 34px;
+    background: linear-gradient(
+      180deg,
+      rgba(19, 37, 58, 0.2) 0%,
+      $navy_blue 50%,
+      rgba(19, 37, 58, 0.2) 100%
+    );
+    border-radius: 2px;
+  }
+
+  .brand-text {
+    line-height: 1.1;
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: $navy_blue;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: $navy_blue;
+      letter-spacing: 0.14em;
+      opacity: 0.82;
+      margin-top: 1px;
+    }
   }
 
   @media (max-width: 576px) {
-    img {
-      max-width: 45px;
+    gap: 0.55rem !important;
+
+    .brand-logo {
+      width: 40px;
     }
 
-    p.fs-5 {
-      font-size: 1.05rem !important;
+    .brand-divider {
+      height: 28px;
     }
 
-    p:not(.fs-5) {
-      font-size: 0.85rem !important;
+    .brand-text {
+      .brand-title {
+        font-size: 1.15rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+      }
     }
   }
 }
@@ -98,7 +150,7 @@ $gray: #F6F6F6;
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 2rem;
+    gap: 2.7rem;
 
     li {
       display: flex;
@@ -109,7 +161,7 @@ $gray: #F6F6F6;
       text-decoration: none;
       color: $navy_blue;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 1rem;
       transition: color 0.2s ease, background-color 0.2s ease;
       padding: 0.25rem 0;
 
@@ -214,6 +266,3 @@ $gray: #F6F6F6;
     z-index: 999;
   }
 }
-
-
-
