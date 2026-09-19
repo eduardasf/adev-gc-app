@@ -1,0 +1,236 @@
+<div class="layout-wrapper d-flex flex-column min-vh-100">
+  <header class="layout-header">
+    <div
+      class="container d-flex align-items-center justify-content-between py-2 py-md-4 position-relative"
+    >
+      <a
+        routerLink="/"
+        class="brand-link d-flex align-items-center gap-3 text-decoration-none"
+      >
+        <img
+          src="assets/img/logo-preta1.png"
+          alt="Logo ADEV Grande Colorado"
+          class="brand-logo"
+        />
+
+        <div class="brand-divider"></div>
+
+        <div class="brand-text d-flex flex-column justify-content-center">
+          <span class="brand-title font-poppins">ADEV</span>
+          <span class="brand-subtitle font-poppins">GRANDE COLORADO</span>
+        </div>
+      </a>
+
+      <!-- Botão Hambúrguer para Mobile -->
+      <button
+        class="menu-toggle d-lg-none"
+        type="button"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen"
+        aria-label="Abrir menu de navegação"
+      >
+        <span class="bar" [class.open]="isMenuOpen"></span>
+        <span class="bar" [class.open]="isMenuOpen"></span>
+        <span class="bar" [class.open]="isMenuOpen"></span>
+      </button>
+
+      <!-- Menu de Navegação -->
+      <nav class="nav-container" [class.open]="isMenuOpen">
+        <ul class="nav-links d-flex align-items-center mb-0">
+          @for (link of navLinks; track link.path) {
+            <li>
+              <a
+                [routerLink]="link.path"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: !!link.exact }"
+                (click)="closeMenu()"
+                >{{ link.label }}</a
+              >
+            </li>
+          }
+          <li class="li-entrar">
+            <a
+              routerLink="/entrar"
+              routerLinkActive="active"
+              (click)="closeMenu()"
+              >Entrar</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  @if (isMenuOpen) {
+    <div class="mobile-backdrop d-lg-none" (click)="closeMenu()"></div>
+  }
+
+  <main class="layout-main flex-grow-1">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="layout-footer w-100">
+    <div class="footer-main py-5">
+      <div class="container">
+        <div class="row g-4 g-lg-4">
+          <div class="col-12 col-md-6 col-lg-3">
+            <a
+              routerLink="/"
+              class="footer-brand d-flex align-items-center gap-3 text-decoration-none mb-3"
+            >
+              <img
+                src="assets/img/logo-branca.png"
+                alt="Logo ADEV Grande Colorado"
+                class="footer-brand-logo"
+              />
+              <div class="footer-brand-divider"></div>
+              <div
+                class="footer-brand-text d-flex flex-column justify-content-center"
+              >
+                <span class="footer-brand-title font-poppins">ADEV</span>
+                <span class="footer-brand-subtitle font-poppins"
+                  >GRANDE COLORADO</span
+                >
+              </div>
+            </a>
+
+            <p class="footer-slogan text-white-50 mb-4">
+              Juntos para servir, amar e viver o propósito de Deus.
+            </p>
+
+            <div class="footer-socials d-flex align-items-center gap-3">
+              <a
+                href="https://www.instagram.com/adevgrandecolorado/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-btn"
+                aria-label="Instagram"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a
+                href="https://www.youtube.com/@AdevGrandeColorado/videos"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-btn"
+                aria-label="YouTube"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Links Rápidos -->
+          <div class="col-12 col-sm-6 col-lg-2 footer-col-bordered">
+            <h3 class="footer-col-title font-poppins">Links rápidos</h3>
+            <ul class="footer-links list-unstyled mb-0">
+              @for (link of navLinks; track link.path) {
+                <li>
+                  <a
+                    [routerLink]="link.path"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: !!link.exact }"
+                    >{{ link.label }}</a
+                  >
+                </li>
+              }
+            </ul>
+          </div>
+
+          <!-- Coluna 3: Horários dos Cultos -->
+          <div class="col-12 col-sm-6 col-lg-4 footer-col-bordered">
+            <h3 class="footer-col-title font-poppins">Horários dos cultos</h3>
+            <div class="footer-schedule d-flex flex-column gap-3">
+              <!-- Domingo -->
+              <div class="schedule-item d-flex align-items-start">
+                <div class="schedule-info">
+                  <strong class="schedule-day d-block">Domingo</strong>
+                  <span class="schedule-time d-block"
+                    >09:00h – Escola Bíblica Dominical</span
+                  >
+                  <span class="schedule-time d-block"
+                    >19:00h – Culto da Família</span
+                  >
+                </div>
+              </div>
+
+              <!-- Quarta-feira -->
+              <div class="schedule-item d-flex align-items-start">
+                <div class="schedule-info">
+                  <strong class="schedule-day d-block">Quarta-feira</strong>
+                  <span class="schedule-time d-block"
+                    >15:00h – Tarde de Milagres</span
+                  >
+                </div>
+              </div>
+
+              <!-- Quinta-feira -->
+              <div class="schedule-item d-flex align-items-start">
+                <div class="schedule-info">
+                  <strong class="schedule-day d-block">Quinta-feira</strong>
+                  <span class="schedule-time d-block"
+                    >19:30h – Culto de Oração</span
+                  >
+                </div>
+              </div>
+
+              <!-- Terça-feira -->
+              <div class="schedule-item d-flex align-items-start">
+                <div class="schedule-info">
+                  <strong class="schedule-day d-block">Terça-feira</strong>
+                  <span class="schedule-time d-block"
+                    >19:00h – Culto de Ensino</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna 4: Nossa Localização -->
+          <div class="col-12 col-sm-6 col-lg-3 footer-col-bordered">
+            <h3 class="footer-col-title font-poppins">Nossa localização</h3>
+            <div class="d-flex align-items-start gap-3 mb-4">
+              <div class="location-pin-wrap mt-1">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="location-details">
+                <strong class="d-block location-name font-poppins">
+                  ADEVGC - IGREJA ASSEMBLEIA DE DEUS
+                </strong>
+                <span class="d-block location-city">
+                  Grande Colorado - DF
+                </span>
+              </div>
+            </div>
+
+            <a
+              href="https://maps.google.com/?q=ADEVGC+Grande+Colorado+DF"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-como-chegar"
+            >
+              <span>COMO CHEGAR</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra Inferior de Copyright -->
+    <div class="footer-bottom py-3">
+      <div
+        class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2 text-center text-md-start"
+      >
+        <span class="footer-copy">
+          © {{ currentYear }} ADEV Grande Colorado. Todos os direitos
+          reservados.
+        </span>
+        <span class="footer-motto fst-italic">
+          Igreja unida, servindo a Deus e às pessoas.
+        </span>
+      </div>
+    </div>
+  </footer>
+</div>

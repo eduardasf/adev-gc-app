@@ -1,0 +1,627 @@
+$navy_blue: #0e2032;
+$yellow: #f7b728;
+$gray: #f6f6f6;
+
+.layout-wrapper {
+  min-height: 100vh;
+}
+
+.layout-header {
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1000;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.layout-main {
+  padding: 0;
+}
+
+// Logo
+.brand-link {
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  .brand-logo {
+    width: 48px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .brand-logo {
+    transform: scale(1.04);
+  }
+
+  .brand-divider {
+    width: 2px;
+    height: 34px;
+    background: linear-gradient(
+      180deg,
+      rgba(19, 37, 58, 0.2) 0%,
+      $navy_blue 50%,
+      rgba(19, 37, 58, 0.2) 100%
+    );
+    border-radius: 2px;
+  }
+
+  .brand-text {
+    line-height: 1.1;
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: $navy_blue;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: $navy_blue;
+      letter-spacing: 0.14em;
+      opacity: 0.82;
+      margin-top: 1px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    gap: 0.55rem !important;
+
+    .brand-logo {
+      width: 40px;
+    }
+
+    .brand-divider {
+      height: 28px;
+    }
+
+    .brand-text {
+      .brand-title {
+        font-size: 1.15rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+      }
+    }
+  }
+}
+
+// Botão Hambúrguer
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1050;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .bar {
+    width: 100%;
+    height: 2px;
+    background-color: $navy_blue;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+
+    &:nth-child(1).open {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    &:nth-child(2).open {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    &:nth-child(3).open {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+// Navegação
+.nav-container {
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2.7rem;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: $navy_blue;
+      font-weight: 500;
+      font-size: 1rem;
+      transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+      padding: 0.25rem 0;
+
+      &:hover,
+      &:active,
+      &.active {
+        color: $yellow !important;
+        font-weight: 600;
+      }
+    }
+
+    .btn-entrar {
+      padding: 0.45rem 1.35rem;
+      border-radius: 8px;
+      background-color: $navy_blue;
+      color: #ffffff !important;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-block;
+      text-align: center;
+
+      &:hover,
+      &:active,
+      &.active {
+        background-color: $yellow;
+        color: $navy_blue !important;
+      }
+    }
+  }
+}
+
+// Estilos Mobile (telas menores que 992px)
+@media (max-width: 991.98px) {
+  .nav-container {
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    right: 1rem;
+    background-color: #ffffff;
+    border: 1px solid rgba(19, 37, 58, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(19, 37, 58, 0.12);
+    padding: 1.25rem 1.5rem;
+    z-index: 1040;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+
+    &.open {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+
+      li {
+        width: 100%;
+      }
+
+      a:not(.btn-entrar) {
+        width: 100%;
+        display: block;
+        padding: 0.65rem 0.75rem;
+        border-radius: 8px;
+        font-size: 1rem;
+
+        &:hover,
+        &:active,
+        &.active {
+          background-color: rgba(247, 183, 40, 0.12);
+        }
+      }
+
+      .li-entrar {
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(19, 37, 58, 0.08);
+
+        .btn-entrar {
+          width: 100%;
+          padding: 0.65rem 1rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  // Backdrop escurecido ao abrir o menu mobile
+  .mobile-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(19, 37, 58, 0.35);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+  }
+}
+
+// ==========================================
+// Estilos do Footer
+// ==========================================
+.layout-footer {
+  width: 100%;
+  margin-top: auto;
+  background:
+    radial-gradient(
+      circle at 95% 15%,
+      rgba(247, 183, 40, 0.04) 0%,
+      transparent 45%
+    ),
+    linear-gradient(180deg, #091728 0%, #0c1c30 100%);
+  color: #ffffff;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  .footer-main {
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+
+  // Identidade da marca no rodapé
+  .footer-brand {
+    user-select: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .footer-brand-logo {
+      width: 48px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .footer-brand-divider {
+      width: 2px;
+      height: 36px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.15) 100%
+      );
+      border-radius: 2px;
+    }
+
+    .footer-brand-text {
+      line-height: 1.1;
+
+      .footer-brand-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 0.04em;
+      }
+
+      .footer-brand-subtitle {
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: 0.14em;
+        opacity: 0.85;
+        margin-top: 1px;
+      }
+    }
+  }
+
+  .footer-slogan {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    max-width: 280px;
+  }
+
+  // Botões de Redes Sociais
+  .footer-socials {
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid $yellow;
+      color: $yellow;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      text-decoration: none;
+      transition: all 0.25s ease;
+
+      i {
+        font-size: 1rem;
+        line-height: 1;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover {
+        background-color: $yellow;
+        color: #091728;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(247, 183, 40, 0.3);
+
+        i {
+          transform: scale(1.08);
+        }
+      }
+    }
+  }
+
+  // Título das Colunas
+  .footer-col-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  // Divisores verticais entre colunas no desktop
+  @media (min-width: 992px) {
+    .footer-col-bordered {
+      border-left: 1px solid rgba(255, 255, 255, 0.12);
+      padding-left: 2rem;
+    }
+  }
+
+  // Centralização no mobile (telas menores que 992px)
+  @media (max-width: 991.98px) {
+    // Títulos das seções centralizados
+    .footer-col-title {
+      text-align: center;
+    }
+
+    // Logo: Centralizada na tela no mobile, mantendo o alinhamento interno do texto
+    .footer-brand {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      width: fit-content;
+
+      .footer-brand-text {
+        text-align: left;
+        align-items: flex-start;
+
+        .footer-brand-title,
+        .footer-brand-subtitle {
+          text-align: left;
+        }
+      }
+    }
+
+    // Slogan e Redes Sociais centralizados
+    .footer-slogan {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-socials {
+      justify-content: center;
+    }
+
+    // Links Rápidos centralizados
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    // Horários dos Cultos centralizados
+    .footer-schedule {
+      align-items: center;
+
+      .schedule-item {
+        justify-content: center;
+        text-align: center;
+
+        .schedule-info {
+          text-align: center;
+        }
+      }
+    }
+
+    // Nossa Localização centralizada
+    .footer-col-bordered {
+      border-left: none;
+      padding-left: 0.75rem;
+      text-align: center;
+
+      .d-flex.align-items-start {
+        justify-content: center;
+      }
+    }
+
+    .location-details {
+      text-align: center;
+    }
+
+    // Botão "COMO CHEGAR" centralizado
+    .btn-como-chegar {
+      margin: 0 auto;
+      display: inline-flex;
+      justify-content: center;
+      width: fit-content;
+    }
+  }
+
+  // Links Rápidos
+  .footer-links {
+    li {
+      margin-bottom: 0.65rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: rgba(255, 255, 255, 0.72);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+      display: inline-block;
+
+      &:hover,
+      &.active {
+        color: $yellow !important;
+        font-weight: 500;
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  // Horários dos Cultos
+  .footer-schedule {
+    .schedule-item {
+      .schedule-icon-wrap {
+        color: $yellow;
+        flex-shrink: 0;
+        width: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 1.15rem;
+          line-height: 1;
+        }
+      }
+
+      .schedule-info {
+        .schedule-day {
+          color: #ffffff;
+          font-size: 0.92rem;
+          font-weight: 600;
+          line-height: 1.3;
+        }
+
+        .schedule-time {
+          color: rgba(255, 255, 255, 0.65);
+          font-size: 0.82rem;
+          line-height: 1.4;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+
+  // Localização
+  .location-pin-wrap {
+    flex-shrink: 0;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      font-size: 1.35rem;
+      color: $yellow;
+      line-height: 1;
+    }
+  }
+
+  .location-details {
+    .location-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+    }
+
+    .location-city {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 2px;
+    }
+  }
+
+  // Botão "COMO CHEGAR"
+  .btn-como-chegar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.6rem;
+    border-radius: 50px;
+    border: 1.5px solid $yellow;
+    background-color: transparent;
+    color: $yellow;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.25s ease;
+
+    i {
+      font-size: 0.82rem;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      background-color: $yellow;
+      color: #091728;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(247, 183, 40, 0.28);
+
+      i {
+        transform: translateX(3px);
+      }
+    }
+  }
+
+  // Barra inferior
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0.18);
+
+    .footer-copy,
+    .footer-motto {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+    }
+  }
+}
