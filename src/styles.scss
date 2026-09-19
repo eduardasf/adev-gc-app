@@ -11,8 +11,6 @@
 @import '@fontsource/inter/600.css';
 @import '@fontsource/inter/700.css';
 
-@import '@fontsource/iosevka-charon/index.css';
-
 //Cores base
 $primary: #1E90FF;
 $secondary: #FFD700;
@@ -32,7 +30,7 @@ $gray: #F6F6F6;
 //Fontes
 $font-family-poppins: 'Poppins', sans-serif;
 $font-family-inter: 'Inter', sans-serif;
-$font-family-iosevka: 'Iosevka Charon', monospace;
+$font-family-code: monospace;
 $font-family-base: $font-family-inter;
 
 // Tipografia padrão
@@ -47,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 code, pre, kbd, samp {
-  font-family: $font-family-iosevka;
+  font-family: $font-family-code;
 }
 
 // Classes utilitárias de fonte
@@ -59,9 +57,8 @@ code, pre, kbd, samp {
   font-family: $font-family-inter !important;
 }
 
-.font-code,
-.font-iosevka {
-  font-family: $font-family-iosevka !important;
+.font-code {
+  font-family: $font-family-code !important;
 }
 
 // Classes utilitárias de cor de texto
