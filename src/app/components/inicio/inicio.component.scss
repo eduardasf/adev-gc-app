@@ -1,3 +1,7 @@
+$navy_blue: #0e2032;
+$yellow: #f7b728;
+$gray: #f6f6f6;
+
 .hero-banner {
   position: relative;
   width: 100%;
@@ -5,7 +9,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-color: #091728; // Fallback escuro durante o carregamento
+  background-color: #091728; 
 
   .hero-bg-wrapper {
     position: absolute;
@@ -54,7 +58,7 @@
 
   .hero-verse {
     color: #ffffff;
-    font-size: 2.75rem;
+    font-size: 2.45rem;
     font-weight: 700;
     line-height: 1.22;
     letter-spacing: -0.01em;
@@ -180,6 +184,326 @@
 
     .hero-reference {
       font-size: 1rem;
+    }
+  }
+}
+
+// ==========================================
+// Seção Próximos Eventos & Localização
+// ==========================================
+.section-eventos {
+  background-color: transparent;
+
+  .titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::before {
+      content: "";
+      width: 60px;
+      height: 2px;
+      background-color: #f7b728;
+    }
+
+    h5 {
+      margin: 0;
+    }
+  }
+
+  // Título e Subtítulo
+  .secao-titulo {
+    font-size: 2.15rem;
+    font-weight: 700;
+    color: $navy_blue;
+    line-height: 1.25;
+
+    @media (max-width: 575.98px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .secao-subtitulo {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+  }
+
+  // Abas de Filtro
+  .filter-tabs {
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 1.35rem;
+      border-radius: 50px;
+      border: 1.5px solid $yellow;
+      background-color: transparent;
+      color: $yellow;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      i {
+        font-size: 0.9rem;
+      }
+
+      &:hover {
+        background-color: rgba(247, 183, 40, 0.1);
+        transform: translateY(-1px);
+      }
+
+      &.active {
+        background-color: $yellow;
+        color: #ffffff;
+      }
+    }
+  }
+
+  // Cards de Horários e Eventos
+  .schedule-card {
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.25s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .day-badge {
+      background-color: #fef8eb;
+      color: $yellow;
+      padding: 0.65rem 0.95rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+
+      i {
+        font-size: 0.95rem;
+      }
+    }
+
+    .schedule-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: $navy_blue;
+      line-height: 1.3;
+    }
+
+    .schedule-hour {
+      font-size: 0.84rem;
+      color: #64748b;
+      font-weight: 500;
+
+      i {
+        color: #94a3b8;
+        font-size: 0.85rem;
+      }
+    }
+
+    .schedule-chevron {
+      color: $navy_blue;
+      transition: transform 0.25s ease;
+      font-size: 0.9rem;
+      padding: 0.25rem;
+
+      &.rotate {
+        transform: rotate(180deg);
+      }
+    }
+
+    .schedule-details {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding-top: 0.75rem;
+    }
+  }
+
+  // Card para quando a lista estiver vazia
+  .empty-schedule-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 2px dashed rgba(0, 0, 0, 0.08);
+    min-height: 240px;
+
+    .empty-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background-color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #94a3b8;
+    }
+
+    .empty-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: $navy_blue;
+    }
+
+    .empty-subtitle {
+      max-width: 320px;
+      line-height: 1.4;
+    }
+  }
+
+  // Card de Localização com Mapa
+  .location-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 1.75rem;
+    height: 100%;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 992px) {
+      min-height: 540px;
+    }
+
+    @media (max-width: 575.98px) {
+      padding: 1.25rem;
+      min-height: 420px;
+    }
+
+    .location-header {
+      flex-shrink: 0;
+    }
+
+    .location-circle-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: $yellow;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(247, 183, 40, 0.3);
+    }
+
+    .location-card-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: $navy_blue;
+    }
+
+    .location-card-sub {
+      font-size: 0.88rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    .map-frame-wrapper {
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 320px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      display: flex;
+
+      @media (min-width: 992px) {
+        min-height: 360px;
+      }
+
+      .map-frame {
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        border: 0;
+        display: block;
+        flex: 1;
+
+        @media (min-width: 992px) {
+          min-height: 360px;
+        }
+      }
+    }
+
+    .location-footer-info {
+      flex-shrink: 0;
+      margin-top: auto;
+      background-color: #f1f5f9;
+      border-radius: 12px;
+      padding: 0.85rem 1.15rem;
+
+      .location-navy-pin {
+        color: $navy_blue;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .location-church-name {
+        color: $navy_blue;
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
+        line-height: 1.3;
+      }
+
+      .location-church-slogan {
+        font-size: 0.78rem;
+        line-height: 1.3;
+      }
+
+      .btn-como-chegar-map {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.55rem 1.35rem;
+        border-radius: 50px;
+        border: 1.5px solid $yellow;
+        background-color: $yellow;
+        color: #ffffff;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 0.82rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        text-decoration: none;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 12px rgba(247, 183, 40, 0.25);
+
+        i {
+          font-size: 0.9rem;
+          transition: transform 0.2s ease;
+        }
+
+        &:hover {
+          background-color: #e6a71e;
+          border-color: #e6a71e;
+          color: #ffffff;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(247, 183, 40, 0.35);
+
+          i {
+            transform: scale(1.1);
+          }
+        }
+
+        @media (max-width: 575.98px) {
+          width: 100%;
+          justify-content: center;
+        }
+      }
     }
   }
 }

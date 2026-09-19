@@ -13,9 +13,222 @@
       <h1 class="hero-verse font-poppins">
         “E conhecereis a verdade, e a verdade vos libertará.”
       </h1>
-      <p class="hero-reference font-poppins">
-        João 8: 31-32
-      </p>
+      <p class="hero-reference font-poppins">João 8: 31-32</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-eventos py-5">
+  <div class="container">
+    <div class="row g-4 g-lg-5 align-items-stretch">
+      <!-- Coluna Esquerda: Próximos Eventos e Horários -->
+      <div class="col-12 col-lg-6">
+        <!-- Tag amarela da seção -->
+        <div class="titulo-secao mb-2">
+          <h5 class="tag-texto font-poppins">PRÓXIMOS EVENTOS</h5>
+        </div>
+
+        <!-- Título e subtítulo -->
+        <h3 class="secao-titulo font-poppins mb-2">
+          Participe dos nossos eventos
+        </h3>
+        <p class="secao-subtitulo text-muted mb-4">
+          Juntos em adoração, comunhão e crescimento na Palavra de Deus.
+        </p>
+
+        <!-- Abas de filtro -->
+        <div class="filter-tabs d-flex align-items-center gap-3 mb-4">
+          <button
+            type="button"
+            class="tab-btn font-poppins"
+            [class.active]="abaAtiva === 'horarios'"
+            (click)="setAba('horarios')"
+          >
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>HORÁRIOS FIXOS</span>
+          </button>
+
+          <button
+            type="button"
+            class="tab-btn font-poppins"
+            [class.active]="abaAtiva === 'eventos'"
+            (click)="setAba('eventos')"
+          >
+            <i class="fa-regular fa-calendar"></i>
+            <span>EVENTOS</span>
+          </button>
+        </div>
+
+        <!-- Lista de Horários Fixos -->
+        @if (abaAtiva === "horarios") {
+          <div class="schedule-list d-flex flex-column gap-3">
+            @for (item of horarios; track item.titulo; let i = $index) {
+              <div
+                class="schedule-card"
+                [class.expanded]="item.aberto"
+                (click)="toggleHorario(i)"
+              >
+                <div
+                  class="d-flex align-items-center justify-content-between p-3"
+                >
+                  <!-- Tag com o Dia -->
+                  <div class="day-badge d-flex align-items-center gap-2">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>{{ item.dia }}</span>
+                  </div>
+
+                  <!-- Detalhes do Culto -->
+                  <div class="schedule-info flex-grow-1 ms-3">
+                    <h4 class="schedule-name font-poppins mb-1">
+                      {{ item.titulo }}
+                    </h4>
+                    <div class="schedule-hour d-flex align-items-center gap-2">
+                      <i class="fa-regular fa-clock"></i>
+                      <span>{{ item.horario }}</span>
+                    </div>
+                  </div>
+
+                  <!-- Seta chevron -->
+                  <div class="schedule-chevron" [class.rotate]="item.aberto">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                </div>
+
+                <!-- Detalhes ao expandir -->
+                @if (item.aberto) {
+                  <div class="schedule-details px-3 pb-3">
+                    <p class="mb-0 text-muted small">{{ item.descricao }}</p>
+                  </div>
+                }
+              </div>
+            } @empty {
+              <div
+                class="empty-schedule-card text-center p-4 d-flex flex-column align-items-center justify-content-center"
+              >
+                <div class="empty-icon mb-2">
+                  <i class="fa-regular fa-calendar-xmark"></i>
+                </div>
+                <h5 class="empty-title font-poppins mb-1">
+                  Nenhum horário cadastrado
+                </h5>
+                <p class="empty-subtitle text-muted small mb-0">
+                  Os horários serão atualizados em breve.
+                </p>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Lista de Eventos Especiais -->
+        @if (abaAtiva === "eventos") {
+          <div class="special-events-list d-flex flex-column gap-3">
+            @for (ev of eventosEspeciais; track ev.titulo) {
+              <div class="schedule-card p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div
+                    class="day-badge d-flex flex-column align-items-center justify-content-center p-2 text-center"
+                    style="min-width: 60px"
+                  >
+                    <span class="fs-6 fw-bold lh-1">{{ ev.data }}</span>
+                    <span class="small" style="font-size: 0.72rem">{{
+                      ev.mes
+                    }}</span>
+                  </div>
+                  <div class="schedule-info flex-grow-1 ms-3">
+                    <h4 class="schedule-name font-poppins mb-1">
+                      {{ ev.titulo }}
+                    </h4>
+                    <div
+                      class="schedule-hour d-flex align-items-center gap-3 text-muted small"
+                    >
+                      <span
+                        ><i class="fa-regular fa-clock me-1"></i
+                        >{{ ev.horario }}</span
+                      >
+                      <span
+                        ><i class="fa-solid fa-location-dot me-1"></i
+                        >{{ ev.local }}</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            } @empty {
+              <div
+                class="empty-schedule-card text-center p-4 d-flex flex-column align-items-center justify-content-center"
+              >
+                <div class="empty-icon mb-2">
+                  <i class="fa-regular fa-calendar-xmark"></i>
+                </div>
+                <h5 class="empty-title font-poppins mb-1">
+                  Nenhum evento programado
+                </h5>
+                <p class="empty-subtitle text-muted small mb-0">
+                  Fique atento às nossas redes para próximas conferências e
+                  programações especiais!
+                </p>
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Card de Localização com Mapa -->
+      <div class="col-12 col-lg-6 d-flex flex-column">
+        <div class="location-card">
+          <div class="location-header d-flex align-items-center gap-3 mb-3">
+            <div class="location-circle-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <h3 class="location-card-title font-poppins mb-1">Localização</h3>
+              <p class="location-card-sub mb-0 text-muted">
+                Venha nos visitar! Estamos de portas abertas para você e sua
+                família.
+              </p>
+            </div>
+          </div>
+
+          <div class="map-frame-wrapper mb-3">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500!2d-47.8469841!3d-15.6690609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a38b21113e2cd%3A0x7ac9b442e17ada1!2sADEVGC%20-%20IGREJA%20ASSEMBLEIA%20DE%20DEUS!5e0!3m2!1spt-BR!2sbr"
+              class="map-frame"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de Localização ADEV Grande Colorado"
+            ></iframe>
+          </div>
+
+          <div
+            class="location-footer-info d-flex align-items-center justify-content-between gap-3 flex-wrap flex-sm-nowrap"
+          >
+            <div class="d-flex align-items-center gap-3">
+              <div class="location-navy-pin">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <strong class="d-block location-church-name font-poppins">
+                  ADEVGC - IGREJA ASSEMBLEIA DE DEUS
+                </strong>
+                <span class="d-block location-church-slogan text-muted">
+                  Igreja unida, servindo a Deus e às pessoas.
+                </span>
+              </div>
+            </div>
+
+            <a
+              href="https://maps.app.goo.gl/WzZqagbht1sHD5tr6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-como-chegar-map font-poppins"
+            >
+              <span>COMO CHEGAR</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
