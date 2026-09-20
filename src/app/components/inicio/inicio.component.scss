@@ -231,35 +231,7 @@ $gray: #f6f6f6;
 
   // Abas de Filtro
   .filter-tabs {
-    .tab-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0.55rem 1.35rem;
-      border-radius: 50px;
-      border: 1.5px solid $yellow;
-      background-color: transparent;
-      color: $yellow;
-      font-weight: 600;
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: all 0.25s ease;
-
-      i {
-        font-size: 0.9rem;
-      }
-
-      &:hover {
-        background-color: rgba(247, 183, 40, 0.1);
-        transform: translateY(-1px);
-      }
-
-      &.active {
-        background-color: $yellow;
-        color: #ffffff;
-      }
-    }
+    // Estilos de .tab-btn gerenciados globalmente no styles.scss
   }
 
   // Cards de Horários e Eventos
@@ -279,8 +251,8 @@ $gray: #f6f6f6;
     .day-badge {
       background-color: #fef8eb;
       color: $yellow;
-      padding: 0.65rem 0.95rem;
-      border-radius: 10px;
+      padding: 1rem 1rem;
+      border-radius: 5px;
       font-weight: 700;
       font-size: 0.88rem;
       letter-spacing: 0.06em;
@@ -460,49 +432,6 @@ $gray: #f6f6f6;
       .location-church-slogan {
         font-size: 0.78rem;
         line-height: 1.3;
-      }
-
-      .btn-como-chegar-map {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0.55rem 1.35rem;
-        border-radius: 50px;
-        border: 1.5px solid $yellow;
-        background-color: $yellow;
-        color: #ffffff;
-        font-family: "Poppins", sans-serif;
-        font-weight: 600;
-        font-size: 0.82rem;
-        letter-spacing: 0.05em;
-        white-space: nowrap;
-        text-decoration: none;
-        flex-shrink: 0;
-        cursor: pointer;
-        transition: all 0.25s ease;
-        box-shadow: 0 4px 12px rgba(247, 183, 40, 0.25);
-
-        i {
-          font-size: 0.9rem;
-          transition: transform 0.2s ease;
-        }
-
-        &:hover {
-          background-color: #e6a71e;
-          border-color: #e6a71e;
-          color: #ffffff;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(247, 183, 40, 0.35);
-
-          i {
-            transform: scale(1.1);
-          }
-        }
-
-        @media (max-width: 575.98px) {
-          width: 100%;
-          justify-content: center;
-        }
       }
     }
   }

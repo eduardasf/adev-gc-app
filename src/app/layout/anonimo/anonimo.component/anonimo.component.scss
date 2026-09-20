@@ -583,32 +583,31 @@ $gray: #f6f6f6;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    padding: 0.65rem 1.6rem;
+    gap: 8px;
+    padding: 0.55rem 1.35rem;
     border-radius: 50px;
     border: 1.5px solid $yellow;
     background-color: transparent;
     color: $yellow;
-    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 0.82rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
     text-decoration: none;
     transition: all 0.25s ease;
 
     i {
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       transition: transform 0.2s ease;
     }
 
     &:hover {
       background-color: $yellow;
       color: #091728;
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       box-shadow: 0 4px 14px rgba(247, 183, 40, 0.28);
 
       i {
-        transform: translateX(3px);
+        transform: scale(1.1);
       }
     }
   }

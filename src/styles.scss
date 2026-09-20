@@ -96,4 +96,95 @@ body {
   padding: 0;
 }
 
+// ==========================================================================
+// Botões Globais (Padronização)
+// ==========================================================================
+
+// Botão de Abas 
+.tab-btn,
+.btn-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.55rem 1.35rem;
+  border-radius: 50px;
+  border: 1.5px solid $yellow;
+  background-color: transparent;
+  color: $yellow;
+  font-family: $font-family-poppins;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+
+  i {
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background-color: rgba($yellow, 0.1);
+    color: $yellow;
+    transform: translateY(-1px);
+
+    i {
+      transform: scale(1.08);
+    }
+  }
+
+  &.active {
+    background-color: $yellow;
+    border-color: $yellow;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(247, 183, 40, 0.25);
+  }
+}
+
+// Botão Sólido 
+.btn-pill-yellow,
+.btn-yellow-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.55rem 1.35rem;
+  border-radius: 50px;
+  border: 1.5px solid $yellow;
+  background-color: $yellow;
+  color: #ffffff;
+  font-family: $font-family-poppins;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+
+  i {
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background-color: #e6a71e;
+    border-color: #e6a71e;
+    color: #ffffff;
+    transform: translateY(-1px);
+
+    i {
+      transform: scale(1.08);
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 
