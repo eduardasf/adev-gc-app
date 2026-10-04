@@ -1,46 +1,51 @@
 // Fontes locais (npm @fontsource)
-@import '@fontsource/poppins/300.css';
-@import '@fontsource/poppins/400.css';
-@import '@fontsource/poppins/500.css';
-@import '@fontsource/poppins/600.css';
-@import '@fontsource/poppins/700.css';
+@import "@fontsource/poppins/300.css";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
 
-@import '@fontsource/inter/300.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
 
 //Cores base
-$primary: #1E90FF;
-$secondary: #FFD700;
-$success: #32CD32;
-$danger: #DC143C;
-$light: #F5F5F5;
+$primary: #1e90ff;
+$secondary: #ffd700;
+$success: #32cd32;
+$danger: #dc143c;
+$light: #f5f5f5;
 $dark: #333333;
-    
+
 $navy_blue: #001969;
-$yellow1: #F7B728;
-$yellow: #F9A728;
-$gray: #F6F6F6;
+$yellow1: #f7b728;
+$yellow: #f9a728;
+$gray: #f6f6f6;
 
 .border-navy {
   border-color: $navy_blue !important;
 }
 
 //Fontes
-$font-family-poppins: 'Poppins', sans-serif;
-$font-family-inter: 'Inter', sans-serif;
+$font-family-poppins: "Poppins", sans-serif;
+$font-family-inter: "Inter", sans-serif;
 $font-family-code: monospace;
 $font-family-base: $font-family-inter;
 
 // Tipografia padrão
-html, body {
+html,
+body {
   font-family: $font-family-base;
   color: $navy_blue;
 }
 
-h1, h2, h3, h4, h6 {
+h1,
+h2,
+h3,
+h4,
+h6 {
   font-family: $font-family-poppins;
   color: $navy_blue;
 }
@@ -50,7 +55,10 @@ h5 {
   color: $yellow;
 }
 
-code, pre, kbd, samp {
+code,
+pre,
+kbd,
+samp {
   font-family: $font-family-code;
 }
 
@@ -68,26 +76,62 @@ code, pre, kbd, samp {
 }
 
 // Classes utilitárias de cor de texto
-.text-primary   { color: $primary !important; }
-.text-secondary { color: $secondary !important; }
-.text-success   { color: $success !important; }
-.text-danger    { color: $danger !important; }
-.text-navy      { color: $navy_blue !important; }
-.text-yellow    { color: $yellow !important; }
-.text-light     { color: $light !important; }
-.text-dark      { color: $dark !important; }
-.text-gray      { color: $gray !important; }
+.text-primary {
+  color: $primary !important;
+}
+.text-secondary {
+  color: $secondary !important;
+}
+.text-success {
+  color: $success !important;
+}
+.text-danger {
+  color: $danger !important;
+}
+.text-navy {
+  color: $navy_blue !important;
+}
+.text-yellow {
+  color: $yellow !important;
+}
+.text-light {
+  color: $light !important;
+}
+.text-dark {
+  color: $dark !important;
+}
+.text-gray {
+  color: $gray !important;
+}
 
 // Classes utilitárias de cor de fundo
-.bg-primary   { background-color: $primary !important; }
-.bg-secondary { background-color: $secondary !important; }
-.bg-success   { background-color: $success !important; }
-.bg-danger    { background-color: $danger !important; }
-.bg-navy      { background-color: $navy_blue !important; }
-.bg-yellow    { background-color: $yellow !important; }
-.bg-light     { background-color: $light !important; }
-.bg-dark      { background-color: $dark !important; }
-.bg-gray      { background-color: $gray !important; }
+.bg-primary {
+  background-color: $primary !important;
+}
+.bg-secondary {
+  background-color: $secondary !important;
+}
+.bg-success {
+  background-color: $success !important;
+}
+.bg-danger {
+  background-color: $danger !important;
+}
+.bg-navy {
+  background-color: $navy_blue !important;
+}
+.bg-yellow {
+  background-color: $yellow !important;
+}
+.bg-light {
+  background-color: $light !important;
+}
+.bg-dark {
+  background-color: $dark !important;
+}
+.bg-gray {
+  background-color: $gray !important;
+}
 
 body {
   background-color: $gray;
@@ -100,7 +144,7 @@ body {
 // Botões Globais (Padronização)
 // ==========================================================================
 
-// Botão de Abas 
+// Botão de Abas
 .tab-btn,
 .btn-tab {
   display: inline-flex;
@@ -140,11 +184,11 @@ body {
     background-color: $yellow;
     border-color: $yellow;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(247, 183, 40, 0.25);
+    //box-shadow: 0 4px 12px rgba(247, 183, 40, 0.25);
   }
 }
 
-// Botão Sólido 
+// Botão Sólido
 .btn-pill-yellow,
 .btn-yellow-solid {
   display: inline-flex;
@@ -171,8 +215,6 @@ body {
   }
 
   &:hover {
-    background-color: #e6a71e;
-    border-color: #e6a71e;
     color: #ffffff;
     transform: translateY(-1px);
 
@@ -187,4 +229,67 @@ body {
   }
 }
 
+// ==========================================================================
+// Títulos e Cabeçalhos Globais com Traço (Padronização)
+// ==========================================================================
 
+.titulo-secao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &::before {
+    content: "";
+    width: 60px;
+    height: 2px;
+    background-color: $yellow;
+  }
+
+  h5 {
+    margin: 0;
+    color: $yellow;
+    font-family: $font-family-poppins;
+  }
+}
+
+// Título e Subtítulo
+.secao-titulo {
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: #0e2032;
+  line-height: 1.25;
+  font-family: $font-family-poppins;
+
+  @media (max-width: 575.98px) {
+    font-size: 1.75rem;
+  }
+}
+
+.secao-subtitulo {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+// ==========================================================================
+// Cards Globais (Padronização)
+// ==========================================================================
+
+.about-card,
+.card-adev,
+.app-card,
+.card-padrao {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+
+  img {
+    width: 100%;
+    border-radius: 16px;
+    display: block;
+  }
+  @media (max-width: 575.98px) {
+    padding: 1.25rem;
+  }
+}

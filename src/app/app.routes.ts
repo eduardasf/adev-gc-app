@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { AnonimoComponent } from './layout/anonimo/anonimo.component/anonimo.component';
+import { SobreComponent } from './components/sobre/sobre.component';
 
 export const routes: Routes = [
   {
@@ -13,9 +14,8 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'inicial',
-        redirectTo: '',
-        pathMatch: 'full',
+        path: 'sobre',
+        component: SobreComponent,
       },
     ],
   },

@@ -1,6 +1,10 @@
 $navy_blue: #0e2032;
-$yellow: #f7b728;
+$yellow: #f9a728;
 $gray: #f6f6f6;
+
+// ==========================================
+// Banner Hero
+// ==========================================
 
 .hero-banner {
   position: relative;
@@ -9,7 +13,7 @@ $gray: #f6f6f6;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-color: #091728; 
+  background-color: #091728;
 
   .hero-bg-wrapper {
     position: absolute;
@@ -194,46 +198,6 @@ $gray: #f6f6f6;
 .section-eventos {
   background-color: transparent;
 
-  .titulo-secao {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    &::before {
-      content: "";
-      width: 60px;
-      height: 2px;
-      background-color: #f7b728;
-    }
-
-    h5 {
-      margin: 0;
-    }
-  }
-
-  // Título e Subtítulo
-  .secao-titulo {
-    font-size: 2.15rem;
-    font-weight: 700;
-    color: $navy_blue;
-    line-height: 1.25;
-
-    @media (max-width: 575.98px) {
-      font-size: 1.75rem;
-    }
-  }
-
-  .secao-subtitulo {
-    font-size: 0.95rem;
-    color: #64748b;
-    line-height: 1.5;
-  }
-
-  // Abas de Filtro
-  .filter-tabs {
-    // Estilos de .tab-btn gerenciados globalmente no styles.scss
-  }
-
   // Cards de Horários e Eventos
   .schedule-card {
     background-color: #ffffff;
@@ -365,7 +329,6 @@ $gray: #f6f6f6;
       justify-content: center;
       font-size: 1.25rem;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(247, 183, 40, 0.3);
     }
 
     .location-card-title {
@@ -436,3 +399,24 @@ $gray: #f6f6f6;
     }
   }
 }
+
+.about-card {
+  img {
+    display: block;
+  }
+
+  .about-img-col {
+    @media (min-width: 992px) {
+      border-right: 1px solid #d6dade;
+      padding-right: 2.5rem;
+    }
+  }
+
+  .about-content {
+    @media (min-width: 992px) {
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+

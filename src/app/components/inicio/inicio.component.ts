@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 export interface HorarioCulto {
   dia: string;
@@ -19,7 +20,7 @@ export interface EventoEspecial {
 @Component({
   selector: 'app-inicio.component',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.scss',
 })
