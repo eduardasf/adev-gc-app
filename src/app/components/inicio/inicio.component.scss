@@ -132,7 +132,6 @@ $gray: #f6f6f6;
     }
   }
 
-  // Telas Mobile (< 768px): a cruz fica limpa no topo e o texto na base
   @media (max-width: 767.98px) {
     min-height: 520px;
     align-items: flex-end;
@@ -518,6 +517,10 @@ $gray: #f6f6f6;
     // 3 Pilares com Divisores
     .about-features {
       flex-wrap: wrap;
+
+      @media (max-width: 575.98px) {
+        display: none !important;
+      }
 
       @media (min-width: 576px) {
         flex-wrap: nowrap;
