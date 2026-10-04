@@ -233,41 +233,91 @@
   </div>
 </section>
 
-<section class="pt-4 pb-5">
+<section class="section-sobre pt-4 pb-5">
   <div class="container">
     <div class="about-card">
-      <div class="row d-flex align-items-center">
-        <div class="col-12 col-lg-6 mb-4 mb-lg-0 about-img-col">
-          <img
-            src="assets/img/igreja.png"
-            alt="Imagem da Igreja"
-            class="img-fluid rounded"
-          />
+      <div class="row align-items-center g-4 g-lg-5 position-relative" style="z-index: 1;">
+        <!-- Coluna da Foto -->
+        <div class="col-12 col-lg-6 about-img-col">
+          <div class="about-img-wrapper">
+            <div class="about-decor-shape"></div>
+            <img
+              src="assets/img/igreja.png"
+              alt="Assembleia de Deus - Ministério Edificar Vidas"
+              class="about-img"
+            />
+          </div>
         </div>
 
+        <!-- Coluna de Conteúdo -->
         <div class="col-12 col-lg-6 about-content">
           <div class="titulo-secao mb-2">
             <h5>CONHEÇA A NOSSA IGREJA</h5>
           </div>
 
-          <h3 class="secao-titulo mb-3" style="font-size: 1.7rem">
+          <h3 class="secao-titulo mb-3">
             Uma igreja feita de pessoas para pessoas.
           </h3>
-          <p class="text-muted mb-4">
-            Acreditamos no amor de Jesus que transforma, restaura e renova.
-            Nosso desejo é caminhar com você em todas as fases da vida, ajudando
-            você a crescer na fé e fazer a diferença
+
+          <p class="about-desc mb-4">
+            Acreditamos que a igreja é um lugar de acolhimento, comunhão e crescimento espiritual. Aqui, todos são bem-vindos! Venha fazer parte da nossa família e caminhar conosco nessa jornada de fé.
           </p>
 
-          <button
-            type="button"
-            class="btn-yellow-solid"
-            [routerLink]="['/sobre']"
-          >
+          <!-- 3 Pilares com Divisores -->
+          <div class="about-features d-flex align-items-center gap-2 gap-sm-3 mb-4">
+            <div class="feature-item d-flex align-items-center gap-2">
+              <div class="feature-icon">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div class="feature-label">
+                <span>Cultos</span>
+                <span>Semanais</span>
+              </div>
+            </div>
+
+            <div class="feature-divider"></div>
+
+            <div class="feature-item d-flex align-items-center gap-2">
+              <div class="feature-icon">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <div class="feature-label">
+                <span>Acolhimento</span>
+                <span>e Comunhão</span>
+              </div>
+            </div>
+
+            <div class="feature-divider"></div>
+
+            <div class="feature-item d-flex align-items-center gap-2">
+              <div class="feature-icon">
+                <i class="fa-solid fa-book-bible"></i>
+              </div>
+              <div class="feature-label">
+                <span>Ensino da</span>
+                <span>Palavra de Deus</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão Saiba Mais Sobre Nós -->
+          <a routerLink="/sobre" class="btn-yellow-solid">
             <span>SAIBA MAIS SOBRE NÓS</span>
-          </button>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
       </div>
+
+      <!-- Fundo decorativo curvo no canto inferior direito arredondado para fora -->
+      <svg
+        class="about-decor-corner"
+        viewBox="0 0 320 220"
+        preserveAspectRatio="none"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M320,0 C260,110 160,190 0,220 L320,220 Z" fill="#fdf5e7"/>
+      </svg>
     </div>
   </div>
 </section>

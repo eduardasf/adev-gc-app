@@ -250,6 +250,18 @@ body {
     color: $yellow;
     font-family: $font-family-poppins;
   }
+
+  @media (max-width: 575.98px) {
+    gap: 8px;
+
+    &::before {
+      width: 32px;
+    }
+
+    h5 {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 // Título e Subtítulo
@@ -263,6 +275,10 @@ body {
   @media (max-width: 575.98px) {
     font-size: 1.75rem;
   }
+
+  @media (max-width: 991.98px) {
+    font-size: 1.7rem;
+  }
 }
 
 .secao-subtitulo {
@@ -275,7 +291,6 @@ body {
 // Cards Globais (Padronização)
 // ==========================================================================
 
-.about-card,
 .card-adev,
 .app-card,
 .card-padrao {

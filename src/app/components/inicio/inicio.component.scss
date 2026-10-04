@@ -400,23 +400,181 @@ $gray: #f6f6f6;
   }
 }
 
+// ==========================================
+// Card Sobre Nós 
+// ==========================================
+
 .about-card {
-  img {
-    display: block;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
+  padding: 2.75rem;
+
+  @media (max-width: 991.98px) {
+    padding: 2rem 1.5rem;
   }
 
-  .about-img-col {
-    @media (min-width: 992px) {
-      border-right: 1px solid #d6dade;
-      padding-right: 2.5rem;
+  // Fundo decorativo no canto inferior direito arredondado para fora
+  .about-decor-corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    height: 220px;
+    pointer-events: none;
+    z-index: 0;
+
+    @media (max-width: 991.98px) {
+      width: 250px;
+      height: 170px;
+    }
+
+    @media (max-width: 575.98px) {
+      width: 170px;
+      height: 120px;
     }
   }
 
+  // Coluna da Foto e Efeito da Curva Laranja
+  .about-img-col {
+    .about-img-wrapper {
+      position: relative;
+      display: block;
+      width: 100%;
+
+      .about-decor-shape {
+        position: absolute;
+        bottom: -10px;
+        left: -10px;
+        width: 150px;
+        height: 150px;
+        background: $yellow;
+        border-radius: 0 100% 0 20px;
+        z-index: 0;
+
+        @media (max-width: 575.98px) {
+          width: 90px;
+          height: 90px;
+          bottom: -6px;
+          left: -6px;
+        }
+      }
+
+      .about-img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        display: block;
+        border-radius: 16px;
+        object-fit: cover;
+        box-shadow: 0 8px 24px rgba(14, 32, 50, 0.12);
+      }
+    }
+  }
+
+  // Coluna de Conteúdo
   .about-content {
-    @media (min-width: 992px) {
-      padding-left: 2.5rem;
+    .titulo-secao {
+      @media (max-width: 575.98px) {
+        gap: 8px;
+
+        &::before {
+          width: 32px;
+        }
+
+        h5 {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .secao-titulo {
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: $navy_blue;
+      line-height: 1.25;
+
+      @media (max-width: 991.98px) {
+        font-size: 1.7rem;
+      }
+
+      @media (max-width: 575.98px) {
+        font-size: 1.35rem;
+      }
+    }
+
+    .about-desc {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+
+      @media (max-width: 575.98px) {
+        font-size: 0.88rem;
+      }
+    }
+
+    // 3 Pilares com Divisores
+    .about-features {
+      flex-wrap: wrap;
+
+      @media (min-width: 576px) {
+        flex-wrap: nowrap;
+      }
+
+      .feature-item {
+        flex: 1;
+        min-width: 105px;
+
+        .feature-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background-color: #fef1d6;
+          color: #1e293b;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.05rem;
+          flex-shrink: 0;
+          transition: transform 0.25s ease;
+
+          @media (max-width: 575.98px) {
+            width: 38px;
+            height: 38px;
+            font-size: 0.95rem;
+          }
+        }
+
+        &:hover .feature-icon {
+          transform: scale(1.08);
+        }
+
+        .feature-label {
+          display: flex;
+          flex-direction: column;
+          font-size: 0.82rem;
+          font-weight: 600;
+          color: #475569;
+          line-height: 1.25;
+
+          @media (max-width: 575.98px) {
+            font-size: 0.74rem;
+          }
+        }
+      }
+
+      .feature-divider {
+        width: 1px;
+        height: 34px;
+        background-color: #e2e8f0;
+        flex-shrink: 0;
+
+        @media (max-width: 575.98px) {
+          display: none;
+        }
+      }
     }
   }
 }
-
-
