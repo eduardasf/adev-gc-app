@@ -1,10 +1,6 @@
 <section class="hero-banner">
   <div class="hero-bg-wrapper">
-    <img
-      src="assets/img/banner.jpg"
-      alt="Paisagem com uma cruz"
-      class="hero-bg-img"
-    />
+    <img src="assets/img/banner.jpg" alt="Paisagem com uma cruz" class="hero-bg-img" />
     <div class="hero-overlay"></div>
   </div>
 
@@ -38,22 +34,14 @@
 
         <!-- Abas de filtro -->
         <div class="filter-tabs d-flex align-items-center gap-3 mb-4">
-          <button
-            type="button"
-            class="tab-btn font-poppins"
-            [class.active]="abaAtiva === 'horarios'"
-            (click)="setAba('horarios')"
-          >
+          <button type="button" class="tab-btn font-poppins" [class.active]="abaAtiva === 'horarios'"
+            (click)="setAba('horarios')">
             <i class="fa-solid fa-calendar-days"></i>
             <span>HORÁRIOS FIXOS</span>
           </button>
 
-          <button
-            type="button"
-            class="tab-btn font-poppins"
-            [class.active]="abaAtiva === 'eventos'"
-            (click)="setAba('eventos')"
-          >
+          <button type="button" class="tab-btn font-poppins" [class.active]="abaAtiva === 'eventos'"
+            (click)="setAba('eventos')">
             <i class="fa-regular fa-calendar"></i>
             <span>EVENTOS</span>
           </button>
@@ -61,116 +49,104 @@
 
         <!-- Lista de Horários Fixos -->
         @if (abaAtiva === "horarios") {
-          <div class="schedule-list d-flex flex-column gap-3">
-            @for (item of horarios; track item.titulo; let i = $index) {
-              <div
-                class="schedule-card"
-                [class.expanded]="item.aberto"
-                (click)="toggleHorario(i)"
-              >
-                <div
-                  class="d-flex align-items-center justify-content-between p-3"
-                >
-                  <!-- Tag com o Dia -->
-                  <div class="day-badge d-flex align-items-center gap-2">
-                    <i class="fa-regular fa-calendar"></i>
-                    <span>{{ item.dia }}</span>
-                  </div>
-
-                  <!-- Detalhes do Culto -->
-                  <div class="schedule-info flex-grow-1 ms-3">
-                    <h4 class="schedule-name font-poppins mb-1">
-                      {{ item.titulo }}
-                    </h4>
-                    <div class="schedule-hour d-flex align-items-center gap-2">
-                      <i class="fa-regular fa-clock"></i>
-                      <span>{{ item.horario }}</span>
-                    </div>
-                  </div>
-
-                  <!-- Seta chevron -->
-                  <div class="schedule-chevron" [class.rotate]="item.aberto">
-                    <i class="fa-solid fa-chevron-down"></i>
-                  </div>
-                </div>
-
-                <!-- Detalhes ao expandir -->
-                @if (item.aberto) {
-                  <div class="schedule-details px-3 pb-3">
-                    <p class="mb-0 text-muted small">{{ item.descricao }}</p>
-                  </div>
-                }
+        <div class="schedule-list d-flex flex-column gap-3">
+          @for (item of horarios; track item.titulo; let i = $index) {
+          <div class="schedule-card" [class.expanded]="item.aberto" (click)="toggleHorario(i)">
+            <div class="d-flex align-items-center justify-content-between p-3">
+              <!-- Tag com o Dia -->
+              <div class="day-badge d-flex align-items-center gap-2">
+                <i class="fa-regular fa-calendar"></i>
+                <span>{{ item.dia }}</span>
               </div>
-            } @empty {
-              <div
-                class="empty-schedule-card text-center p-4 d-flex flex-column align-items-center justify-content-center"
-              >
-                <div class="empty-icon mb-2">
-                  <i class="fa-regular fa-calendar-xmark"></i>
+
+              <!-- Detalhes do Culto -->
+              <div class="schedule-info flex-grow-1 ms-3">
+                <h4 class="schedule-name font-poppins mb-1">
+                  {{ item.titulo }}
+                </h4>
+                <div class="schedule-hour d-flex align-items-center gap-2">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>{{ item.horario }}</span>
                 </div>
-                <h5 class="empty-title font-poppins mb-1">
-                  Nenhum horário cadastrado
-                </h5>
-                <p class="empty-subtitle text-muted small mb-0">
-                  Os horários serão atualizados em breve.
-                </p>
               </div>
+
+              <!-- Seta chevron -->
+              <div class="schedule-chevron" [class.rotate]="item.aberto">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+
+            <!-- Detalhes ao expandir -->
+            @if (item.aberto) {
+            <div class="schedule-details px-3 pb-3">
+              <p class="mb-0 text-muted small">{{ item.descricao }}</p>
+            </div>
             }
           </div>
+          } @empty {
+          <div class="empty-schedule-card text-center p-4 d-flex flex-column align-items-center justify-content-center">
+            <div class="empty-icon mb-2">
+              <i class="fa-regular fa-calendar-xmark"></i>
+            </div>
+            <h5 class="empty-title font-poppins mb-1">
+              Nenhum horário cadastrado
+            </h5>
+            <p class="empty-subtitle text-muted small mb-0">
+              Os horários serão atualizados em breve.
+            </p>
+          </div>
+          }
+        </div>
         }
 
         <!-- Lista de Eventos Especiais -->
         @if (abaAtiva === "eventos") {
-          <div class="special-events-list d-flex flex-column gap-3">
-            @for (ev of eventosEspeciais; track ev.titulo) {
-              <div class="schedule-card p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                  <div
-                    class="day-badge d-flex flex-column align-items-center justify-content-center p-2 text-center"
-                    style="min-width: 60px"
-                  >
-                    <span class="fs-6 fw-bold lh-1">{{ ev.data }}</span>
-                    <span class="small" style="font-size: 0.72rem">{{
-                      ev.mes
-                    }}</span>
-                  </div>
-                  <div class="schedule-info flex-grow-1 ms-3">
-                    <h4 class="schedule-name font-poppins mb-1">
-                      {{ ev.titulo }}
-                    </h4>
-                    <div
-                      class="schedule-hour d-flex align-items-center gap-3 text-muted small"
-                    >
-                      <span
-                        ><i class="fa-regular fa-clock me-1"></i
-                        >{{ ev.horario }}</span
-                      >
-                      <span
-                        ><i class="fa-solid fa-location-dot me-1"></i
-                        >{{ ev.local }}</span
-                      >
-                    </div>
-                  </div>
+        <div class="special-events-list d-flex flex-column gap-3">
+          @for (ev of eventosEspeciais; track ev.titulo) {
+          <div class="schedule-card p-3">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="day-badge d-flex flex-column align-items-center justify-content-center p-2 text-center"
+                style="min-width: 60px">
+                <span class="fs-6 fw-bold lh-1">{{ ev.data }}</span>
+                <span class="small" style="font-size: 0.72rem">{{
+                  ev.mes
+                  }}</span>
+              </div>
+              <div class="schedule-info flex-grow-1 ms-3">
+                <h4 class="schedule-name font-poppins mb-1">
+                  {{ ev.titulo }}
+                </h4>
+                <div class="schedule-hour d-flex align-items-center gap-3 text-muted small">
+                  <span><i class="fa-regular fa-clock me-1"></i>{{ ev.horario }}</span>
+                  <span><i class="fa-solid fa-location-dot me-1"></i>{{ ev.local }}</span>
                 </div>
               </div>
-            } @empty {
-              <div
-                class="empty-schedule-card text-center p-4 d-flex flex-column align-items-center justify-content-center"
-              >
-                <div class="empty-icon mb-2">
-                  <i class="fa-regular fa-calendar-xmark"></i>
-                </div>
-                <h5 class="empty-title font-poppins mb-1">
-                  Nenhum evento programado
-                </h5>
-                <p class="empty-subtitle text-muted small mb-0">
-                  Fique atento às nossas redes para próximas conferências e
-                  programações especiais!
-                </p>
-              </div>
-            }
+            </div>
           </div>
+          } @empty {
+          <div class="empty-schedule-card text-center p-4 d-flex flex-column align-items-center justify-content-center">
+            <div class="empty-icon mb-2">
+              <i class="fa-regular fa-calendar-xmark"></i>
+            </div>
+            <h5 class="empty-title font-poppins mb-1">
+              Nenhum evento programado
+            </h5>
+            <p class="empty-subtitle text-muted small mb-0">
+              Fique atento às nossas redes para próximas conferências e
+              programações especiais!
+            </p>
+          </div>
+          }
+        </div>
         }
+
+        <!-- Botão para Ver Agenda Completa -->
+        <div class="mt-4 pt-1">
+          <a routerLink="/eventos" class="btn-pill-yellow">
+            <span>VER AGENDA COMPLETA DE EVENTOS</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Card de Localização com Mapa -->
@@ -192,17 +168,12 @@
           <div class="map-frame-wrapper mb-3">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500!2d-47.8469841!3d-15.6690609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a38b21113e2cd%3A0x7ac9b442e17ada1!2sADEVGC%20-%20IGREJA%20ASSEMBLEIA%20DE%20DEUS!5e0!3m2!1spt-BR!2sbr"
-              class="map-frame"
-              loading="lazy"
-              allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa de Localização ADEV Grande Colorado"
-            ></iframe>
+              class="map-frame" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de Localização ADEV Grande Colorado"></iframe>
           </div>
 
           <div
-            class="location-footer-info d-flex align-items-center justify-content-between gap-3 flex-wrap flex-sm-nowrap"
-          >
+            class="location-footer-info d-flex align-items-center justify-content-between gap-3 flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center gap-3">
               <div class="location-navy-pin">
                 <i class="fa-solid fa-location-dot"></i>
@@ -217,12 +188,8 @@
               </div>
             </div>
 
-            <a
-              href="https://maps.app.goo.gl/WzZqagbht1sHD5tr6"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-pill-yellow"
-            >
+            <a href="https://maps.app.goo.gl/WzZqagbht1sHD5tr6" target="_blank" rel="noopener noreferrer"
+              class="btn-pill-yellow">
               <span>COMO CHEGAR</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -236,30 +203,19 @@
 <section class="section-sobre pt-4 pb-5">
   <div class="container">
     <div class="about-card">
-      <div
-        class="row align-items-center g-4 g-lg-5 position-relative"
-        style="z-index: 1"
-      >
+      <div class="row align-items-center g-4 g-lg-5 position-relative" style="z-index: 1">
         <!-- Coluna da Foto (Carrossel com fotos da igreja) -->
         <div class="col-12 col-lg-6 about-img-col">
           <div class="about-img-wrapper">
             <div class="about-decor-shape"></div>
 
-            <div
-              class="card-image-slider position-relative"
-              (mouseenter)="pausarAutoPlay()"
-              (mouseleave)="retomarAutoPlay()"
-              aria-label="Galeria de fotos da igreja"
-            >
+            <div class="card-image-slider position-relative" (mouseenter)="pausarAutoPlay()"
+              (mouseleave)="retomarAutoPlay()" aria-label="Galeria de fotos da igreja">
               <!-- Slides de Fotos -->
               <div class="card-slider-track">
                 @for (slide of slidesIgreja; track slide.imagem; let i = $index) {
                 <div class="card-slide" [class.active]="i === slideIgrejaAtual">
-                  <img
-                    [src]="slide.imagem"
-                    [alt]="slide.titulo"
-                    class="card-slider-img"
-                  />
+                  <img [src]="slide.imagem" [alt]="slide.titulo" class="card-slider-img" />
 
                   <!-- Selo de identificação da foto -->
                   <div class="card-slide-badge font-poppins">
@@ -272,38 +228,21 @@
               </div>
 
               <!-- Setas de navegação do slider -->
-              <button
-                type="button"
-                class="card-slider-btn card-slider-prev"
-                (click)="anteriorSlideIgreja()"
-                aria-label="Foto anterior"
-                title="Foto anterior"
-              >
+              <button type="button" class="card-slider-btn card-slider-prev" (click)="anteriorSlideIgreja()"
+                aria-label="Foto anterior" title="Foto anterior">
                 <i class="fa-solid fa-chevron-left"></i>
               </button>
 
-              <button
-                type="button"
-                class="card-slider-btn card-slider-next"
-                (click)="proximoSlideIgreja()"
-                aria-label="Próxima foto"
-                title="Próxima foto"
-              >
+              <button type="button" class="card-slider-btn card-slider-next" (click)="proximoSlideIgreja()"
+                aria-label="Próxima foto" title="Próxima foto">
                 <i class="fa-solid fa-chevron-right"></i>
               </button>
 
               <!-- Indicadores de bolinhas do slider -->
-              <div
-                class="card-slider-dots d-flex justify-content-center align-items-center gap-1"
-              >
+              <div class="card-slider-dots d-flex justify-content-center align-items-center gap-1">
                 @for (slide of slidesIgreja; track slide.imagem; let i = $index) {
-                <button
-                  type="button"
-                  class="card-slider-dot"
-                  [class.active]="i === slideIgrejaAtual"
-                  (click)="irParaSlideIgreja(i)"
-                  [attr.aria-label]="'Foto ' + (i + 1)"
-                ></button>
+                <button type="button" class="card-slider-dot" [class.active]="i === slideIgrejaAtual"
+                  (click)="irParaSlideIgreja(i)" [attr.aria-label]="'Foto ' + (i + 1)"></button>
                 }
               </div>
             </div>
@@ -327,9 +266,7 @@
           </p>
 
           <!-- 3 Pilares com Divisores -->
-          <div
-            class="about-features d-none d-sm-flex align-items-center gap-2 gap-sm-3 mb-4"
-          >
+          <div class="about-features d-none d-sm-flex align-items-center gap-2 gap-sm-3 mb-4">
             <div class="feature-item d-flex align-items-center gap-2">
               <div class="feature-icon">
                 <i class="fa-solid fa-users"></i>
@@ -374,13 +311,8 @@
       </div>
 
       <!-- Fundo decorativo curvo no canto inferior direito arredondado para fora -->
-      <svg
-        class="about-decor-corner"
-        viewBox="0 0 320 220"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg class="about-decor-corner" viewBox="0 0 320 220" preserveAspectRatio="none" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <path d="M320,0 C260,110 160,190 0,220 L320,220 Z" fill="#fdf5e7" />
       </svg>
     </div>
@@ -389,19 +321,11 @@
 
 <!-- Botão Flutuante do WhatsApp (Pedido de Oração) -->
 <aside class="whatsapp-float-container" aria-label="Atendimento e Pedido de Oração">
-  <a
-    [href]="whatsappUrl"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-float-btn"
-    aria-label="Fazer pedido de oração no WhatsApp"
-  >
+  <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn"
+    aria-label="Fazer pedido de oração no WhatsApp">
     <!-- Tooltip / Balão de Pedido de Oração -->
-    <div
-      class="whatsapp-tooltip font-poppins"
-      [class.initial-show]="mostrarTooltipInicial"
-    >
-      <div class="tooltip-header d-flex align-items-center gap-1">
+    <div class="whatsapp-tooltip font-poppins" [class.initial-show]="mostrarTooltipInicial">
+      <div class="tooltip-header d-flex align-items-center gap-2">
         <i class="fa-solid fa-hands-praying tooltip-icon"></i>
         <strong class="tooltip-title">Pedido de Oração</strong>
       </div>

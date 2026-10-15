@@ -165,17 +165,17 @@ export class InicioComponent implements OnInit, OnDestroy {
 
   eventosEspeciais: EventoEspecial[] = [
     {
-      data: '28',
-      mes: 'SET',
-      titulo: 'Vigília da Vitória',
-      horario: '22:00H',
-      local: 'Templo Sede',
+      data: '17',
+      mes: 'OUT',
+      titulo: '30º Aniversário da Igreja',
+      horario: '19:30H',
+      local: 'ADEV Grande Colorado',
     },
     {
-      data: '12',
+      data: '18',
       mes: 'OUT',
-      titulo: 'Dia das Crianças - Departamento Infantil',
-      horario: '15:00H',
+      titulo: '30º Aniversário da Igreja',
+      horario: '19:30H',
       local: 'ADEV Grande Colorado',
     },
   ];
