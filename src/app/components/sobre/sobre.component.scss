@@ -1,0 +1,664 @@
+$navy_blue: #0e2032;
+$yellow: #f9a728;
+$gray: #f6f6f6;
+
+// =========================================================================
+// 1. CARROSSEL DE IMAGENS DA IGREJA (HERO NO CONTAINER)
+// =========================================================================
+.church-carousel-section {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+
+  .carousel-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #0b1522;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08);
+
+    @media (max-width: 1199.98px) {
+      height: 460px;
+    }
+
+    @media (max-width: 991.98px) {
+      height: 400px;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 767.98px) {
+      height: 320px;
+      border-radius: 16px;
+    }
+
+    @media (max-width: 480px) {
+      height: 260px;
+      border-radius: 14px;
+    }
+  }
+
+  .carousel-slides-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    // Fundo ambiente suave desfocado com as cores da própria imagem
+    .slide-ambient-backdrop {
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      right: -30px;
+      bottom: -30px;
+      background-size: cover;
+      background-position: center;
+      filter: blur(36px) brightness(0.55);
+      transform: scale(1.1);
+      opacity: 0.65;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    // Imagem principal: 100% visível, nítida e sem cortes
+    .slide-img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
+    }
+
+    // Selo compacto com identificação da foto sem degradê sobre a imagem
+    .slide-badge-pill {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      z-index: 5;
+      background: rgba(14, 32, 50, 0.8);
+      color: #ffffff;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.85rem;
+
+      .badge-tag {
+        color: $yellow;
+        font-weight: 700;
+        font-size: 0.76rem;
+        letter-spacing: 0.06em;
+      }
+
+      .badge-sep {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .badge-title {
+        font-weight: 600;
+        color: #ffffff;
+      }
+
+      @media (max-width: 575.98px) {
+        bottom: 14px;
+        left: 14px;
+        font-size: 0.76rem;
+        padding: 0.35rem 0.8rem;
+
+        .badge-title {
+          max-width: 170px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
+  // Setas de navegação lateral com alto contraste sobre fotos claras ou escuras
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: $navy_blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    transition: all 0.25s ease;
+
+    &:hover {
+      background-color: $yellow;
+      border-color: $yellow;
+      color: #ffffff;
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 20px rgba(249, 167, 40, 0.4);
+    }
+
+    &.carousel-arrow-prev {
+      left: 18px;
+
+      @media (max-width: 767.98px) {
+        left: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+      }
+    }
+
+    &.carousel-arrow-next {
+      right: 18px;
+
+      @media (max-width: 767.98px) {
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // Barra de Indicadores (Dots) em cápsula elegante
+  .carousel-indicators-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    .indicators-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 32, 50, 0.55);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .indicator-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+
+      &:hover {
+        background-color: #ffffff;
+      }
+
+      &.active {
+        width: 26px;
+        border-radius: 20px;
+        background-color: $yellow;
+        box-shadow: 0 0 10px rgba(249, 167, 40, 0.7);
+      }
+    }
+  }
+}
+
+// =========================================================================
+// 2. SEÇÃO SOBRE A IGREJA (HISTÓRIA, MISSÃO E PROPÓSITOS)
+// =========================================================================
+.section-sobre-detalhes {
+  background-color: transparent;
+
+  // Card principal estilizado igual à Home (sem a imagem lateral)
+  .about-card {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
+    padding: 3rem;
+
+    @media (max-width: 991.98px) {
+      padding: 2.25rem 1.75rem;
+    }
+
+    @media (max-width: 575.98px) {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .about-decor-corner {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 280px;
+      height: 190px;
+      pointer-events: none;
+      z-index: 0;
+
+      @media (max-width: 991.98px) {
+        width: 220px;
+        height: 150px;
+      }
+
+      @media (max-width: 575.98px) {
+        width: 150px;
+        height: 100px;
+      }
+    }
+
+    .about-content {
+      .about-story-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $navy_blue;
+        line-height: 1.3;
+
+        @media (max-width: 767.98px) {
+          font-size: 1.4rem;
+        }
+      }
+
+      .about-desc {
+        color: #64748b;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        max-width: 980px;
+
+        @media (max-width: 575.98px) {
+          font-size: 0.9rem;
+        }
+      }
+
+      .about-features {
+        flex-wrap: wrap;
+
+        @media (max-width: 575.98px) {
+          display: none !important;
+        }
+
+        @media (min-width: 576px) {
+          flex-wrap: nowrap;
+        }
+
+        .feature-item {
+          flex: 1;
+          max-width: 220px;
+
+          .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #fef1d6;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+
+            @media (max-width: 575.98px) {
+              width: 38px;
+              height: 38px;
+              font-size: 0.95rem;
+            }
+          }
+
+          &:hover .feature-icon {
+            transform: scale(1.08);
+          }
+
+          .feature-label {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: #475569;
+            line-height: 1.25;
+
+            @media (max-width: 575.98px) {
+              font-size: 0.74rem;
+            }
+          }
+        }
+
+        .feature-divider {
+          width: 1px;
+          height: 34px;
+          background-color: #e2e8f0;
+          flex-shrink: 0;
+
+          @media (max-width: 575.98px) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // Cards de Missão, Visão e Propósitos
+  .pillar-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 2.25rem 1.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      border-color: rgba(249, 167, 40, 0.25);
+
+      .pillar-icon-box {
+        transform: scale(1.08);
+        background-color: $yellow;
+        color: #ffffff;
+      }
+    }
+
+    .pillar-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background-color: #fef8eb;
+      color: $yellow;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 1.25rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .pillar-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: $navy_blue;
+      margin-bottom: 0.85rem;
+    }
+
+    .pillar-text {
+      color: #64748b;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// =========================================================================
+// 3. SEÇÃO PESSOAS E CARGOS (CARROSSEL DA EQUIPE)
+// =========================================================================
+.section-equipe {
+  background-color: transparent;
+
+  // Botões de navegação lateral da equipe
+  .team-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    color: $navy_blue;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    &:hover {
+      background-color: $yellow;
+      border-color: $yellow;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(249, 167, 40, 0.3);
+    }
+  }
+
+  // Wrapper do carrossel
+  .team-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 4px 20px 4px;
+  }
+
+  .team-carousel-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+  }
+
+  .team-card-col {
+    padding: 0 10px;
+    box-sizing: border-box;
+    transition: flex 0.3s ease, max-width 0.3s ease;
+  }
+
+  // Card individual do membro
+  .team-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 2.25rem 1.25rem 1.75rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-color: rgba(249, 167, 40, 0.25);
+
+      .team-photo-ring {
+        box-shadow: 0 0 0 4px rgba(249, 167, 40, 0.25);
+        transform: scale(1.03);
+      }
+    }
+
+    // Foto circular
+    .team-photo-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+
+      @media (max-width: 575.98px) {
+        width: 130px;
+        height: 130px;
+      }
+
+      .team-photo-ring {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        padding: 4px;
+        background: linear-gradient(135deg, $yellow 0%, #ffd066 100%);
+        box-shadow: 0 4px 14px rgba(249, 167, 40, 0.25);
+        transition: all 0.3s ease;
+      }
+
+      .team-avatar-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        background-color: #f1f5f9;
+        border: 2px solid #ffffff;
+      }
+
+      .team-badge-icon {
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: $navy_blue;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .team-info {
+      width: 100%;
+
+      .team-dept-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: $yellow;
+        background-color: #fef8eb;
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+      }
+
+      .team-member-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: $navy_blue;
+        line-height: 1.3;
+      }
+
+      .team-member-role {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #64748b;
+        line-height: 1.35;
+      }
+
+      .team-member-desc {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        max-width: 260px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  // Indicadores de Dots da Equipe
+  .team-indicators-bar {
+    .team-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #cbd5e1;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+
+      &:hover {
+        background-color: #94a3b8;
+      }
+
+      &.active {
+        width: 28px;
+        border-radius: 14px;
+        background-color: $yellow;
+      }
+    }
+  }
+}
+
+// =========================================================================
+// 4. CHAMADA PARA PARTICIPAÇÃO (CONVITE)
+// =========================================================================
+.section-convite {
+  .invite-card {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #fefcf9 100%);
+    border-radius: 24px;
+    padding: 3.5rem 2rem;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(249, 167, 40, 0.15);
+
+    @media (max-width: 575.98px) {
+      padding: 2.25rem 1.25rem;
+    }
+
+    .invite-decor-circle {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-color: rgba(249, 167, 40, 0.08);
+      pointer-events: none;
+    }
+
+    .invite-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #fef8eb;
+      color: $yellow;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .invite-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $navy_blue;
+
+      @media (max-width: 767.98px) {
+        font-size: 1.55rem;
+      }
+    }
+
+    .invite-subtitle {
+      max-width: 580px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+}
