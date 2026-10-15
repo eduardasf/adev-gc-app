@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 export interface HorarioCulto {
   dia: string;
+  frequencia: string;
   titulo: string;
   horario: string;
   descricao: string;
@@ -12,9 +13,11 @@ export interface HorarioCulto {
 export interface EventoIgreja {
   data: string;
   mes: string;
+  frequencia: string;
   titulo: string;
   horario: string;
   descricao: string;
+  destaque?: boolean;
   aberto?: boolean;
 }
 
@@ -26,12 +29,13 @@ export interface EventoIgreja {
   styleUrl: './eventos.component.scss',
 })
 export class EventosComponent implements OnInit {
-  abaAtiva: 'horarios' | 'eventos' | 'todos' = 'horarios';
+  abaAtiva: 'todos' | 'horarios' | 'eventos' = 'todos';
 
   // Horários Fixos da Semana
   horarios: HorarioCulto[] = [
     {
       dia: 'TER',
+      frequencia: 'Toda Terça-feira',
       titulo: 'Culto de Ensino',
       horario: '19:00H',
       descricao:
@@ -40,6 +44,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'QUA',
+      frequencia: 'Toda Quarta-feira',
       titulo: 'Tarde de Milagres',
       horario: '15:00H',
       descricao:
@@ -48,6 +53,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'QUI',
+      frequencia: 'Toda Quinta-feira',
       titulo: 'Culto de Oração',
       horario: '19:30H',
       descricao:
@@ -56,6 +62,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'SÁB',
+      frequencia: 'Todo Sábado',
       titulo: 'Conexão Jovem',
       horario: '19:30H',
       descricao:
@@ -64,6 +71,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'DOM',
+      frequencia: 'Todo Domingo pela manhã',
       titulo: 'Escola Bíblica Dominical (EBD)',
       horario: '09:00H',
       descricao:
@@ -72,6 +80,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'DOM',
+      frequencia: 'Todo Domingo à noite',
       titulo: 'Culto da Família',
       horario: '19:00H',
       descricao:
@@ -85,15 +94,18 @@ export class EventosComponent implements OnInit {
     {
       data: '17-18',
       mes: 'OUT',
+      frequencia: '17 e 18 de Outubro',
       titulo: '30º Aniversário da Igreja',
       horario: '19:30H',
       descricao:
         'Três décadas de fé, milagres e proclamação do Evangelho no Grande Colorado. Dois dias especiais com preletores e louvores convidados.',
+      destaque: true,
       aberto: false,
     },
     {
       data: '01',
       mes: 'NOV',
+      frequencia: '1º Domingo do Mês',
       titulo: 'Culto da Santa Ceia do Senhor',
       horario: '19:00H',
       descricao:
@@ -103,6 +115,7 @@ export class EventosComponent implements OnInit {
     {
       data: '14',
       mes: 'NOV',
+      frequencia: 'Sábado Especial',
       titulo: 'Encontro de Casais: Famílias no Altar',
       horario: '19:30H',
       descricao:
@@ -112,6 +125,7 @@ export class EventosComponent implements OnInit {
     {
       data: '27',
       mes: 'NOV',
+      frequencia: 'Sexta para Sábado',
       titulo: 'Grande Vigília da Unidade',
       horario: '22:30H',
       descricao:
@@ -121,6 +135,7 @@ export class EventosComponent implements OnInit {
     {
       data: '12',
       mes: 'DEZ',
+      frequencia: 'Sábado à Tarde',
       titulo: 'Chá das Mulheres Vitoriosas',
       horario: '17:00H',
       descricao:
@@ -130,6 +145,7 @@ export class EventosComponent implements OnInit {
     {
       data: '31',
       mes: 'DEZ',
+      frequencia: 'Última Noite do Ano',
       titulo: 'Culto da Virada de Ano',
       horario: '21:30H',
       descricao:
@@ -144,7 +160,7 @@ export class EventosComponent implements OnInit {
     }
   }
 
-  setAba(aba: 'horarios' | 'eventos' | 'todos'): void {
+  setAba(aba: 'todos' | 'horarios' | 'eventos'): void {
     this.abaAtiva = aba;
   }
 
