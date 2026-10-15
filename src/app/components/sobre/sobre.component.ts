@@ -26,33 +26,21 @@ export interface MembroEquipe {
 })
 export class SobreComponent implements OnInit, OnDestroy {
   // =========================================================================
-  // 1. CARROSSEL DE IMAGENS DA IGREJA (HERO)
+  // 1. IMAGENS DA IGREJA (SLIDER DO CARD)
   // =========================================================================
   slidesIgreja: SlideIgreja[] = [
     {
-      imagem: 'assets/img/banner.jpg',
-      tag: 'TEMPLO PRINCIPAL',
-      titulo: 'ADEV Grande Colorado',
-      descricao: 'Um espaço de adoração, paz e acolhimento para você e toda a sua família.'
-    },
-    {
       imagem: 'assets/img/igreja.png',
-      tag: 'NOSSA COMUNIDADE',
-      titulo: 'Uma Igreja Feita de Pessoas para Pessoas',
-      descricao: 'Vivendo em comunhão e aprendendo juntos o caminho da verdade e do amor cristão.'
+      tag: 'NOSSO TEMPLO',
+      titulo: 'ADEV Grande Colorado',
+      descricao: 'Assembleia de Deus - Ministério Edificar Vidas'
     },
     {
-      imagem: 'assets/img/banner2.png',
-      tag: 'CELEBRAÇÃO & LOUVOR',
-      titulo: 'Momentos Marcantes na Presença de Deus',
-      descricao: 'Cultos dinâmicos com adoração sincera, oração fervorosa e comunhão profunda.'
+      imagem: 'assets/img/igreja_culto.png',
+      tag: 'ADORAÇÃO',
+      titulo: 'Comunhão e Fé',
+      descricao: 'Momentos inspiradores de louvor e ensino bíblico.'
     },
-    {
-      imagem: 'assets/img/banner3.jpg',
-      tag: 'ENSINO & PROPÓSITO',
-      titulo: 'Edificação Sólida na Palavra',
-      descricao: 'Estudos bíblicos, Escola Dominical e discipulado para todas as gerações.'
-    }
   ];
 
   slideIgrejaAtual: number = 0;

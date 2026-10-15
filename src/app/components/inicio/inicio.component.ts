@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 export interface HorarioCulto {
@@ -17,14 +18,93 @@ export interface EventoEspecial {
   local: string;
 }
 
+export interface SlideIgreja {
+  imagem: string;
+  tag: string;
+  titulo: string;
+  descricao: string;
+}
+
 @Component({
   selector: 'app-inicio.component',
   standalone: true,
-  imports: [RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.scss',
 })
-export class InicioComponent {
+export class InicioComponent implements OnInit, OnDestroy {
+  // Slides do Card da Igreja
+  slidesIgreja: SlideIgreja[] = [
+    {
+      imagem: 'assets/img/igreja.png',
+      tag: 'NOSSO TEMPLO',
+      titulo: 'ADEV Grande Colorado',
+      descricao: 'Assembleia de Deus - Ministério Edificar Vidas',
+    },
+    {
+      imagem: 'assets/img/igreja_culto.png',
+      tag: 'ADORAÇÃO',
+      titulo: 'Comunhão e Fé',
+      descricao: 'Momentos inspiradores de louvor e ensino bíblico.',
+    },
+  ];
+
+  slideIgrejaAtual: number = 0;
+  private autoPlayTimer: any = null;
+  isAutoPlayPausado: boolean = false;
+  private isBrowser: boolean;
+
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  ngOnInit(): void {
+    if (this.isBrowser) {
+      this.iniciarAutoPlay();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.pararAutoPlay();
+  }
+
+  proximoSlideIgreja(): void {
+    this.slideIgrejaAtual = (this.slideIgrejaAtual + 1) % this.slidesIgreja.length;
+  }
+
+  anteriorSlideIgreja(): void {
+    this.slideIgrejaAtual =
+      (this.slideIgrejaAtual - 1 + this.slidesIgreja.length) % this.slidesIgreja.length;
+  }
+
+  irParaSlideIgreja(index: number): void {
+    this.slideIgrejaAtual = index;
+  }
+
+  iniciarAutoPlay(): void {
+    this.pararAutoPlay();
+    if (!this.isBrowser) return;
+    this.autoPlayTimer = setInterval(() => {
+      if (!this.isAutoPlayPausado) {
+        this.proximoSlideIgreja();
+      }
+    }, 6000);
+  }
+
+  pararAutoPlay(): void {
+    if (this.autoPlayTimer) {
+      clearInterval(this.autoPlayTimer);
+      this.autoPlayTimer = null;
+    }
+  }
+
+  pausarAutoPlay(): void {
+    this.isAutoPlayPausado = true;
+  }
+
+  retomarAutoPlay(): void {
+    this.isAutoPlayPausado = false;
+  }
 
   abaAtiva: 'horarios' | 'eventos' = 'horarios';
 

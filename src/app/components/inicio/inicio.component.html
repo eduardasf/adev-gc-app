@@ -240,15 +240,73 @@
         class="row align-items-center g-4 g-lg-5 position-relative"
         style="z-index: 1"
       >
-        <!-- Coluna da Foto -->
+        <!-- Coluna da Foto (Carrossel com fotos da igreja) -->
         <div class="col-12 col-lg-6 about-img-col">
           <div class="about-img-wrapper">
             <div class="about-decor-shape"></div>
-            <img
-              src="assets/img/igreja.png"
-              alt="Assembleia de Deus - Ministério Edificar Vidas"
-              class="about-img"
-            />
+
+            <div
+              class="card-image-slider position-relative"
+              (mouseenter)="pausarAutoPlay()"
+              (mouseleave)="retomarAutoPlay()"
+              aria-label="Galeria de fotos da igreja"
+            >
+              <!-- Slides de Fotos -->
+              <div class="card-slider-track">
+                @for (slide of slidesIgreja; track slide.imagem; let i = $index) {
+                <div class="card-slide" [class.active]="i === slideIgrejaAtual">
+                  <img
+                    [src]="slide.imagem"
+                    [alt]="slide.titulo"
+                    class="card-slider-img"
+                  />
+
+                  <!-- Selo de identificação da foto -->
+                  <div class="card-slide-badge font-poppins">
+                    <span class="badge-tag me-1">{{ slide.tag }}</span>
+                    <span class="badge-dot mx-1">•</span>
+                    <span class="badge-text">{{ slide.titulo }}</span>
+                  </div>
+                </div>
+                }
+              </div>
+
+              <!-- Setas de navegação do slider -->
+              <button
+                type="button"
+                class="card-slider-btn card-slider-prev"
+                (click)="anteriorSlideIgreja()"
+                aria-label="Foto anterior"
+                title="Foto anterior"
+              >
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <button
+                type="button"
+                class="card-slider-btn card-slider-next"
+                (click)="proximoSlideIgreja()"
+                aria-label="Próxima foto"
+                title="Próxima foto"
+              >
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <!-- Indicadores de bolinhas do slider -->
+              <div
+                class="card-slider-dots d-flex justify-content-center align-items-center gap-1"
+              >
+                @for (slide of slidesIgreja; track slide.imagem; let i = $index) {
+                <button
+                  type="button"
+                  class="card-slider-dot"
+                  [class.active]="i === slideIgrejaAtual"
+                  (click)="irParaSlideIgreja(i)"
+                  [attr.aria-label]="'Foto ' + (i + 1)"
+                ></button>
+                }
+              </div>
+            </div>
           </div>
         </div>
 

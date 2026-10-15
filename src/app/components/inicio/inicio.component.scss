@@ -461,14 +461,170 @@ $gray: #f6f6f6;
         }
       }
 
-      .about-img {
+      .card-image-slider {
         position: relative;
         z-index: 1;
         width: 100%;
-        display: block;
-        border-radius: 16px;
-        object-fit: cover;
+        height: 380px;
+        border-radius: 18px;
+        overflow: hidden;
+        background-color: #0e2032;
         box-shadow: 0 8px 24px rgba(14, 32, 50, 0.12);
+
+        @media (max-width: 1199.98px) {
+          height: 350px;
+        }
+
+        @media (max-width: 991.98px) {
+          height: 320px;
+        }
+
+        @media (max-width: 575.98px) {
+          height: 250px;
+          border-radius: 14px;
+        }
+
+        .card-slider-track {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .card-slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+          transform: scale(1.02);
+
+          &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+          }
+
+          .card-slider-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+          }
+
+          .card-slide-badge {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            z-index: 2;
+            background: rgba(14, 32, 50, 0.82);
+            color: #ffffff;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.78rem;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+            .badge-tag {
+              color: $yellow;
+              font-weight: 700;
+              font-size: 0.72rem;
+              letter-spacing: 0.05em;
+            }
+
+            .badge-dot {
+              color: rgba(255, 255, 255, 0.4);
+            }
+
+            .badge-text {
+              font-weight: 600;
+            }
+          }
+        }
+
+        .card-slider-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 4;
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.92);
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          color: $navy_blue;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.85rem;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+          transition: all 0.25s ease;
+
+          &:hover {
+            background-color: $yellow;
+            border-color: $yellow;
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.08);
+          }
+
+          &.card-slider-prev {
+            left: 12px;
+          }
+
+          &.card-slider-next {
+            right: 12px;
+          }
+
+          @media (max-width: 575.98px) {
+            width: 32px;
+            height: 32px;
+            font-size: 0.75rem;
+
+            &.card-slider-prev {
+              left: 8px;
+            }
+
+            &.card-slider-next {
+              right: 8px;
+            }
+          }
+        }
+
+        .card-slider-dots {
+          position: absolute;
+          bottom: 12px;
+          right: 14px;
+          z-index: 4;
+          background: rgba(14, 32, 50, 0.6);
+          backdrop-filter: blur(6px);
+          padding: 4px 10px;
+          border-radius: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+
+          .card-slider-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            padding: 0;
+
+            &.active {
+              width: 18px;
+              border-radius: 10px;
+              background-color: $yellow;
+            }
+          }
+        }
       }
     }
   }

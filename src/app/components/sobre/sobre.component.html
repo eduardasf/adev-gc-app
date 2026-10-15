@@ -1,91 +1,12 @@
 <!-- ========================================================================= -->
-<!-- 1. CARROSSEL DE IMAGENS DA IGREJA (FOTOS NÍTIDAS SEM DEGRADÊ) -->
+<!-- 1. SOBRE A IGREJA (HISTÓRIA, MISSÃO E PROPÓSITOS COM FOTOS NO CARD) -->
 <!-- ========================================================================= -->
-<section
-  class="church-carousel-section pt-4 pt-md-5 pb-3"
-  (mouseenter)="pausarAutoPlay()"
-  (mouseleave)="retomarAutoPlay()"
-  aria-label="Galeria de fotos da igreja"
->
+<section class="section-sobre-detalhes pt-4 pt-md-5 pb-2 pb-md-3">
   <div class="container">
-    <div class="carousel-container position-relative">
-      <!-- Slides de Imagens Nítidas e Sem Cortes -->
-      <div class="carousel-slides-wrapper">
-        @for (slide of slidesIgreja; track slide.titulo; let i = $index) {
-          <div
-            class="carousel-slide"
-            [class.active]="i === slideIgrejaAtual"
-            [attr.aria-hidden]="i !== slideIgrejaAtual"
-          >
-            <!-- Fundo ambiente suave desfocado com as cores da própria imagem -->
-            <div
-              class="slide-ambient-backdrop"
-              [style.background-image]="'url(' + slide.imagem + ')'"
-            ></div>
-
-            <!-- Imagem principal sem cortes (object-fit: contain) -->
-            <img
-              [src]="slide.imagem"
-              [alt]="slide.titulo"
-              class="slide-img"
-            />
-
-            <!-- Selo compacto com identificação da foto -->
-            <div class="slide-badge-pill font-poppins">
-              <span class="badge-tag me-2">{{ slide.tag }}</span>
-              <span class="badge-sep me-2">•</span>
-              <span class="badge-title">{{ slide.titulo }}</span>
-            </div>
-          </div>
-        }
-      </div>
-
-      <!-- Setas Laterais de Navegação com Alto Contraste -->
-      <button
-        type="button"
-        class="carousel-arrow carousel-arrow-prev"
-        (click)="anteriorSlideIgreja()"
-        aria-label="Imagem anterior"
-      >
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <button
-        type="button"
-        class="carousel-arrow carousel-arrow-next"
-        (click)="proximoSlideIgreja()"
-        aria-label="Próxima imagem"
-      >
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-      <!-- Indicadores / Dots Inferiores em Cápsula -->
-      <div class="carousel-indicators-bar d-flex justify-content-center align-items-center">
-        <div class="indicators-capsule">
-          @for (slide of slidesIgreja; track slide.titulo; let i = $index) {
-            <button
-              type="button"
-              class="indicator-dot"
-              [class.active]="i === slideIgrejaAtual"
-              (click)="irParaSlideIgreja(i)"
-              [attr.aria-label]="'Ir para slide ' + (i + 1)"
-            ></button>
-          }
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================================================= -->
-<!-- 2. SOBRE A IGREJA (HISTÓRIA, MISSÃO E PROPÓSITOS) -->
-<!-- ========================================================================= -->
-<section class="section-sobre-detalhes pt-4 pb-5">
-  <div class="container">
-    <!-- Cabeçalho da Seção -->
-    <div class="row mb-4">
-      <div class="col-12 text-center text-md-start">
-        <div class="titulo-secao mb-2 justify-content-center justify-content-md-start">
+    <!-- Cabeçalho da Seção (Alinhado à esquerda em todas as telas) -->
+    <div class="row mb-3 mb-md-4">
+      <div class="col-12 text-start">
+        <div class="titulo-secao mb-2">
           <h5 class="tag-texto font-poppins">CONHEÇA A NOSSA HISTÓRIA</h5>
         </div>
         <h2 class="secao-titulo font-poppins mb-2">
@@ -97,30 +18,76 @@
       </div>
     </div>
 
-    <!-- Bloco Principal de História (Sem imagem lateral, ocupando o card) -->
-    <div class="about-card mb-5">
-      <div class="row position-relative" style="z-index: 1;">
-        <div class="col-12 about-content">
+    <!-- Bloco Principal de História (com slider de fotos da igreja no lado esquerdo) -->
+    <div class="about-card mb-3 mb-md-4">
+      <div class="row align-items-center g-4 g-lg-5 position-relative" style="z-index: 1;">
+        <!-- Coluna da Esquerda: Slider de Fotos da Igreja -->
+        <div class="col-12 col-lg-6 about-img-col">
+          <div class="about-img-wrapper">
+            <div class="about-decor-shape"></div>
+
+            <div class="card-image-slider position-relative" (mouseenter)="pausarAutoPlay()"
+              (mouseleave)="retomarAutoPlay()" aria-label="Galeria de fotos da igreja">
+              <!-- Slides de Fotos -->
+              <div class="card-slider-track">
+                @for (slide of slidesIgreja; track slide.imagem; let i = $index) {
+                <div class="card-slide" [class.active]="i === slideIgrejaAtual">
+                  <img [src]="slide.imagem" [alt]="slide.titulo" class="card-slider-img" />
+
+                  <!-- Selo de identificação da foto -->
+                  <div class="card-slide-badge font-poppins">
+                    <span class="badge-tag me-1">{{ slide.tag }}</span>
+                    <span class="badge-dot mx-1">•</span>
+                    <span class="badge-text">{{ slide.titulo }}</span>
+                  </div>
+                </div>
+                }
+              </div>
+
+              <!-- Setas de navegação do slider -->
+              <button type="button" class="card-slider-btn card-slider-prev" (click)="anteriorSlideIgreja()"
+                aria-label="Foto anterior" title="Foto anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <button type="button" class="card-slider-btn card-slider-next" (click)="proximoSlideIgreja()"
+                aria-label="Próxima foto" title="Próxima foto">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <!-- Indicadores de bolinhas do slider -->
+              <div class="card-slider-dots d-flex justify-content-center align-items-center gap-1">
+                @for (slide of slidesIgreja; track slide.imagem; let i = $index) {
+                <button type="button" class="card-slider-dot" [class.active]="i === slideIgrejaAtual"
+                  (click)="irParaSlideIgreja(i)" [attr.aria-label]="'Foto ' + (i + 1)"></button>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna da Direita: Conteúdo de História -->
+        <div class="col-12 col-lg-6 about-content">
           <h3 class="about-story-title font-poppins mb-3">
             Nascida com um propósito divino no Grande Colorado
           </h3>
 
           <p class="about-desc mb-3">
-            A <strong>ADEV Grande Colorado</strong> é uma igreja cristã evangélica pertencente à 
-            Assembleia de Deus - Ministério Edificar Vidas. Nascemos da visão e do desejo ardente 
-            de levar a mensagem transformadora do Evangelho a cada família da região do Grande Colorado 
+            A <strong>ADEV Grande Colorado</strong> é uma igreja cristã evangélica pertencente à
+            Assembleia de Deus - Ministério Edificar Vidas. Nascemos da visão e do desejo ardente
+            de levar a mensagem transformadora do Evangelho a cada família da região do Grande Colorado
             e arredores, em Sobradinho/DF.
           </p>
 
           <p class="about-desc mb-4">
-            Desde a nossa fundação, temos sido um ambiente acolhedor, onde vidas são restauradas, 
-            laços de amizade sincera são fortalecidos e a fé em Jesus Cristo é nutrida dia após dia. 
-            Não somos apenas um prédio ou uma congregação: somos uma <em>família de fé</em>, unida 
+            Desde a nossa fundação, temos sido um ambiente acolhedor, onde vidas são restauradas,
+            laços de amizade sincera são fortalecidos e a fé em Jesus Cristo é nutrida dia após dia.
+            Não somos apenas um prédio ou uma congregação: somos uma <em>família de fé</em>, unida
             pelo amor e comprometida em proclamar as boas novas com integridade e paixão.
           </p>
 
-          <!-- 3 Pilares com Divisores (Idêntico ao padrão da Home) -->
-          <div class="about-features d-flex align-items-center gap-3 gap-sm-4 pt-2">
+          <!-- 3 Pilares com Divisores (Padrão exato da Home) -->
+          <div class="about-features d-flex align-items-center gap-2 gap-sm-3 pt-1">
             <div class="feature-item d-flex align-items-center gap-2">
               <div class="feature-icon">
                 <i class="fa-solid fa-users"></i>
@@ -159,60 +126,52 @@
       </div>
 
       <!-- Fundo decorativo curvo no canto inferior direito -->
-      <svg
-        class="about-decor-corner"
-        viewBox="0 0 320 220"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg class="about-decor-corner" viewBox="0 0 320 220" preserveAspectRatio="none" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <path d="M320,0 C260,110 160,190 0,220 L320,220 Z" fill="#fdf5e7" />
       </svg>
     </div>
 
-    <!-- Cards de Missão, Visão e Propósitos -->
-    <div class="row g-4 mb-4">
-      <!-- Missão -->
+    <!-- Cards de Missão, Visão e Propósitos (Design Limpo e Objetivo) -->
+    <div class="row g-3 g-md-4 mb-2">
+      <!-- 01. Missão -->
       <div class="col-12 col-md-4">
         <div class="pillar-card h-100">
-          <div class="pillar-icon-box">
+          <div class="pillar-icon-badge mb-3">
             <i class="fa-solid fa-bullhorn"></i>
           </div>
-          <h4 class="pillar-title font-poppins">Nossa Missão</h4>
+          <h4 class="pillar-title font-poppins mb-2">Nossa Missão</h4>
           <p class="pillar-text mb-0">
-            Pregar o Evangelho integral de Jesus Cristo, acolher todas as pessoas com amor, 
-            promover o crescimento espiritual através da Bíblia e transformar realidades por 
-            meio da fé e da solidariedade.
+            Pregar o Evangelho de Jesus Cristo, acolher todas as pessoas com amor e promover a transformação de vidas
+            através da Palavra de Deus.
           </p>
         </div>
       </div>
 
-      <!-- Visão -->
+      <!-- 02. Visão -->
       <div class="col-12 col-md-4">
         <div class="pillar-card h-100">
-          <div class="pillar-icon-box">
-            <i class="fa-solid fa-eye"></i>
+          <div class="pillar-icon-badge mb-3">
+            <i class="fa-solid fa-compass"></i>
           </div>
-          <h4 class="pillar-title font-poppins">Nossa Visão</h4>
+          <h4 class="pillar-title font-poppins mb-2">Nossa Visão</h4>
           <p class="pillar-text mb-0">
-            Ser uma igreja viva, acolhedora, relevante e multiplicadora de discípulos, 
-            reconhecida pela vivência autêntica da fé, pela excelência no ensino bíblico e 
-            pelo cuidado integral com cada família.
+            Ser uma igreja viva, acolhedora e frutífera, reconhecida pelo ensino bíblico sólido e pela formação de
+            discípulos fiéis.
           </p>
         </div>
       </div>
 
-      <!-- Propósitos & Valores -->
+      <!-- 03. Propósitos -->
       <div class="col-12 col-md-4">
         <div class="pillar-card h-100">
-          <div class="pillar-icon-box">
+          <div class="pillar-icon-badge mb-3">
             <i class="fa-solid fa-hands-praying"></i>
           </div>
-          <h4 class="pillar-title font-poppins">Nossos Propósitos</h4>
+          <h4 class="pillar-title font-poppins mb-2">Nossos Propósitos</h4>
           <p class="pillar-text mb-0">
-            Glorificar a Deus através da adoração verdadeira, da oração contínua, da 
-            comunhão fraternal e do serviço alegre ao próximo, mantendo as Escrituras como 
-            nossa única regra de fé e conduta.
+            Glorificar a Deus através da adoração sincera, da oração contínua, da comunhão fraternal e do serviço com
+            compaixão ao próximo.
           </p>
         </div>
       </div>
@@ -221,13 +180,13 @@
 </section>
 
 <!-- ========================================================================= -->
-<!-- 3. PESSOAS E CARGOS DA IGREJA (CARROSSEL DA EQUIPE / LIDERANÇA) -->
+<!-- 2. PESSOAS E CARGOS DA IGREJA (CARROSSEL DA EQUIPE / LIDERANÇA) -->
 <!-- ========================================================================= -->
-<section class="section-equipe pt-4 pb-5">
+<section class="section-equipe pt-2 pt-md-3 pb-4 pb-md-4">
   <div class="container">
-    <!-- Cabeçalho e Controles da Equipe -->
-    <div class="row align-items-end mb-4">
-      <div class="col-12 col-md-8">
+    <!-- Cabeçalho e Controles da Equipe (Alinhado à esquerda) -->
+    <div class="row align-items-end mb-3">
+      <div class="col-12 col-md-8 text-start">
         <div class="titulo-secao mb-2">
           <h5 class="tag-texto font-poppins">NOSSA LIDERANÇA</h5>
         </div>
@@ -239,55 +198,48 @@
         </p>
       </div>
 
-      <!-- Setas Laterais de Navegação do Carrossel de Equipe -->
-      <div class="col-12 col-md-4 mt-3 mt-md-0 d-flex justify-content-md-end justify-content-start align-items-center gap-2">
-        <button
-          type="button"
-          class="team-nav-btn team-nav-prev"
-          (click)="anteriorEquipe()"
-          aria-label="Pessoas anteriores"
-          title="Ver membros anteriores"
-        >
+      <!-- Setas no Header: visíveis apenas no Desktop (d-none d-md-flex) -->
+      <div class="col-12 col-md-4 mt-3 mt-md-0 d-none d-md-flex justify-content-md-end align-items-center gap-2">
+        <button type="button" class="team-nav-btn team-nav-prev" (click)="anteriorEquipe()"
+          aria-label="Pessoas anteriores" title="Ver membros anteriores">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
 
-        <button
-          type="button"
-          class="team-nav-btn team-nav-next"
-          (click)="proximoEquipe()"
-          aria-label="Próximas pessoas"
-          title="Ver próximos membros"
-        >
+        <button type="button" class="team-nav-btn team-nav-next" (click)="proximoEquipe()" aria-label="Próximas pessoas"
+          title="Ver próximos membros">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
     </div>
 
-    <!-- Container do Carrossel da Equipe -->
-    <div class="team-carousel-wrapper">
-      <div
-        class="team-carousel-track"
-        [style.transform]="getTranslateXEquipe()"
-      >
-        @for (membro of membrosEquipe; track membro.nome; let i = $index) {
-          <div
-            class="team-card-col"
-            [style.flex]="'0 0 ' + (100 / itensPorVez) + '%'"
-            [style.max-width]="(100 / itensPorVez) + '%'"
-          >
+    <!-- Container do Carrossel da Equipe com Setas nas Bordas no Mobile -->
+    <div class="team-carousel-outer position-relative">
+      <!-- Botão Anterior no Mobile (centro da borda esquerda do card) -->
+      <button type="button" class="team-card-arrow team-card-prev d-md-none" (click)="anteriorEquipe()"
+        aria-label="Membro anterior" title="Membro anterior">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- Botão Próximo no Mobile (centro da borda direita do card) -->
+      <button type="button" class="team-card-arrow team-card-next d-md-none" (click)="proximoEquipe()"
+        aria-label="Próximo membro" title="Próximo membro">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <div class="team-carousel-wrapper">
+        <div class="team-carousel-track" [style.transform]="getTranslateXEquipe()">
+          @for (membro of membrosEquipe; track membro.nome; let i = $index) {
+          <div class="team-card-col" [style.flex]="'0 0 ' + (100 / itensPorVez) + '%'"
+            [style.max-width]="(100 / itensPorVez) + '%'">
             <div class="team-card text-center h-100">
               <!-- Foto em Formato Circular com Borda de Destaque -->
               <div class="team-photo-container mx-auto mb-3">
                 <div class="team-photo-ring">
-                  <img
-                    [src]="membro.foto"
-                    [alt]="membro.nome + ' - ' + membro.cargo"
-                    class="team-avatar-img"
-                  />
+                  <img [src]="membro.foto" [alt]="membro.nome + ' - ' + membro.cargo" class="team-avatar-img" />
                 </div>
-                <div class="team-badge-icon">
+                <!-- <div class="team-badge-icon">
                   <i class="fa-solid fa-cross"></i>
-                </div>
+                </div> -->
               </div>
 
               <!-- Informações da Pessoa -->
@@ -310,29 +262,25 @@
               </div>
             </div>
           </div>
-        }
+          }
+        </div>
       </div>
     </div>
 
     <!-- Indicadores Inferiores da Equipe -->
-    <div class="team-indicators-bar d-flex justify-content-center align-items-center gap-2 mt-4">
+    <div class="team-indicators-bar d-flex justify-content-center align-items-center gap-2 mt-3">
       @for (pagina of getPaginasEquipe(); track pagina; let p = $index) {
-        <button
-          type="button"
-          class="team-dot"
-          [class.active]="p === indiceEquipe"
-          (click)="irParaEquipe(p)"
-          [attr.aria-label]="'Página de membros ' + (p + 1)"
-        ></button>
+      <button type="button" class="team-dot" [class.active]="p === indiceEquipe" (click)="irParaEquipe(p)"
+        [attr.aria-label]="'Página de membros ' + (p + 1)"></button>
       }
     </div>
   </div>
 </section>
 
 <!-- ========================================================================= -->
-<!-- 4. CHAMADA PARA PARTICIPAÇÃO (CONVITE) -->
+<!-- 3. CHAMADA PARA PARTICIPAÇÃO (CONVITE) -->
 <!-- ========================================================================= -->
-<section class="section-convite pb-5">
+<!-- <section class="section-convite pb-5">
   <div class="container">
     <div class="invite-card text-center">
       <div class="invite-decor-circle"></div>
@@ -351,12 +299,7 @@
             <span>VER NOSSOS HORÁRIOS DE CULTO</span>
             <i class="fa-solid fa-calendar-days ms-2"></i>
           </a>
-          <a
-            href="https://maps.app.goo.gl/WzZqagbht1sHD5tr6"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="tab-btn"
-          >
+          <a href="https://maps.app.goo.gl/WzZqagbht1sHD5tr6" target="_blank" rel="noopener noreferrer" class="tab-btn">
             <span>COMO CHEGAR À IGREJA</span>
             <i class="fa-solid fa-location-dot ms-2"></i>
           </a>
@@ -364,4 +307,4 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
