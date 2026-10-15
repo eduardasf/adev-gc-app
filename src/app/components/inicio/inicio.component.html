@@ -386,3 +386,34 @@
     </div>
   </div>
 </section>
+
+<!-- Botão Flutuante do WhatsApp (Pedido de Oração) -->
+<aside class="whatsapp-float-container" aria-label="Atendimento e Pedido de Oração">
+  <a
+    [href]="whatsappUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float-btn"
+    aria-label="Fazer pedido de oração no WhatsApp"
+  >
+    <!-- Tooltip / Balão de Pedido de Oração -->
+    <div
+      class="whatsapp-tooltip font-poppins"
+      [class.initial-show]="mostrarTooltipInicial"
+    >
+      <div class="tooltip-header d-flex align-items-center gap-1">
+        <i class="fa-solid fa-hands-praying tooltip-icon"></i>
+        <strong class="tooltip-title">Pedido de Oração</strong>
+      </div>
+      <span class="tooltip-sub">Posso orar por você? Fale conosco!</span>
+    </div>
+
+    <!-- Círculo do Ícone do WhatsApp -->
+    <div class="whatsapp-icon-circle">
+      <i class="fa-brands fa-whatsapp"></i>
+    </div>
+
+    <!-- Ondas de Pulso Suave -->
+    <div class="whatsapp-pulse-ring"></div>
+  </a>
+</aside>

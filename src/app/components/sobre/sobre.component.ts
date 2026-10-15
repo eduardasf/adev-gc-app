@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 export interface SlideIgreja {
   imagem: string;
@@ -20,7 +19,7 @@ export interface MembroEquipe {
 @Component({
   selector: 'app-sobre',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './sobre.component.html',
   styleUrl: './sobre.component.scss'
 })

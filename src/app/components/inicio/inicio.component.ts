@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 export interface HorarioCulto {
   dia: string;
@@ -33,6 +34,9 @@ export interface SlideIgreja {
   styleUrl: './inicio.component.scss',
 })
 export class InicioComponent implements OnInit, OnDestroy {
+  // Configurações do WhatsApp a partir das variáveis de ambiente
+  whatsappUrl: string = `https://wa.me/${environment.whatsappNumero}?text=${encodeURIComponent(environment.whatsappMensagemOracao)}`;
+
   // Slides do Card da Igreja
   slidesIgreja: SlideIgreja[] = [
     {
@@ -52,6 +56,8 @@ export class InicioComponent implements OnInit, OnDestroy {
   slideIgrejaAtual: number = 0;
   private autoPlayTimer: any = null;
   isAutoPlayPausado: boolean = false;
+  mostrarTooltipInicial: boolean = true;
+  private tooltipTimer: any = null;
   private isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
@@ -61,11 +67,22 @@ export class InicioComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.isBrowser) {
       this.iniciarAutoPlay();
+      this.iniciarTimerTooltip();
     }
   }
 
   ngOnDestroy(): void {
     this.pararAutoPlay();
+    if (this.tooltipTimer) {
+      clearTimeout(this.tooltipTimer);
+      this.tooltipTimer = null;
+    }
+  }
+
+  iniciarTimerTooltip(): void {
+    this.tooltipTimer = setTimeout(() => {
+      this.mostrarTooltipInicial = false;
+    }, 6000);
   }
 
   proximoSlideIgreja(): void {
