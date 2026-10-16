@@ -4,6 +4,8 @@ import { AnonimoComponent } from './layout/anonimo/anonimo.component/anonimo.com
 import { SobreComponent } from './components/sobre/sobre.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { MinisteriosComponent } from './components/ministerios/ministerios.component';
+import { ContribuaComponent } from './components/contribua/contribua.component';
+import { ContatoComponent } from './components/contato/contato.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +28,14 @@ export const routes: Routes = [
       {
         path: 'ministerios',
         component: MinisteriosComponent,
+      },
+      {
+        path: 'contribua',
+        component: ContribuaComponent,
+      },
+      {
+        path: 'contato',
+        component: ContatoComponent,
       },
     ],
   },

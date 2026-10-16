@@ -1,0 +1,180 @@
+<section class="section-contato pt-4 pt-md-5 pb-5">
+  <div class="container">
+    <!-- Cabeçalho da Seção -->
+    <div class="row mb-3 mb-md-4">
+      <div class="col-12 text-start">
+        <div class="titulo-secao mb-2">
+          <h5 class="tag-texto font-poppins">CANAIS OFICIAIS</h5>
+        </div>
+        <h2 class="secao-titulo font-poppins mb-2">
+          Entre em Contato
+        </h2>
+        <p class="secao-subtitulo mb-0">
+          Estamos de portas e coração abertos para acolher você e sua família.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card Principal de Contato (Visual Limpo e Direto) -->
+    <div class="contato-main-card">
+      <!-- Citação Bíblica Editorial -->
+      <blockquote class="verse-quote mb-4">
+        <p class="verse-text font-poppins mb-1">
+          “Venham a mim, todos os que estão cansados e sobrecarregados, e eu darei descanso a vocês.”
+        </p>
+        <cite class="verse-cite font-poppins">— Mateus 11:28</cite>
+      </blockquote>
+
+      <div class="row g-4 g-lg-5 align-items-stretch">
+        <!-- Coluna da Esquerda: Canais Diretos -->
+        <div class="col-12 col-lg-5 d-flex flex-column justify-content-between">
+          <div class="contact-channels-list d-flex flex-column gap-3">
+            <!-- 1. WhatsApp -->
+            <div class="channel-card p-3">
+              <div class="d-flex align-items-center gap-3">
+                <div class="channel-icon-box icon-whatsapp flex-shrink-0">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="flex-grow-1 min-w-0">
+                  <span class="channel-label font-poppins text-muted small d-block">WhatsApp Oficial</span>
+                  <strong class="channel-value font-poppins d-block mb-2">{{ whatsappFormatado }}</strong>
+                  <button
+                    type="button"
+                    class="btn-pill-yellow font-poppins btn-sm"
+                    (click)="abrirWhatsApp()"
+                    title="Conversar no WhatsApp"
+                  >
+                    <i class="fa-brands fa-whatsapp text-white me-1"></i>
+                    <span>FALAR NO WHATSAPP</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Telefone Fixo -->
+            <div class="channel-card p-3">
+              <div class="d-flex align-items-center gap-3">
+                <div class="channel-icon-box icon-phone flex-shrink-0">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="flex-grow-1 min-w-0">
+                  <span class="channel-label font-poppins text-muted small d-block">Telefone Fixo / Secretaria</span>
+                  <strong class="channel-value font-poppins d-block mb-2">{{ telefoneFixoFormatado }}</strong>
+                  <a
+                    [href]="'tel:+' + telefoneFixo"
+                    class="btn-como-chegar-outline font-poppins btn-sm"
+                    title="Ligar para o telefone fixo da igreja"
+                  >
+                    <i class="fa-solid fa-phone-volume me-1"></i>
+                    <span>LIGAR AGORA</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Localização -->
+            <div class="channel-card p-3">
+              <div class="d-flex align-items-center gap-3">
+                <div class="channel-icon-box icon-location flex-shrink-0">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="flex-grow-1 min-w-0">
+                  <span class="channel-label font-poppins text-muted small d-block">Nosso Endereço</span>
+                  <strong class="channel-value font-poppins d-block">ADEVGC - Assembleia de Deus</strong>
+                  <span class="text-muted small d-block mb-2">Grande Colorado, Sobradinho – DF</span>
+                  <a
+                    [href]="mapsUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-como-chegar-outline font-poppins btn-sm"
+                    title="Abrir no Google Maps"
+                  >
+                    <i class="fa-solid fa-diamond-turn-right me-1"></i>
+                    <span>COMO CHEGAR</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Redes Sociais -->
+            <div class="channel-card p-3">
+              <div class="d-flex align-items-center gap-3">
+                <div class="channel-icon-box icon-social flex-shrink-0">
+                  <i class="fa-solid fa-share-nodes"></i>
+                </div>
+                <div class="flex-grow-1 min-w-0">
+                  <span class="channel-label font-poppins text-muted small d-block">Redes Sociais</span>
+                  <strong class="channel-value font-poppins d-block mb-2">&#64;adevgrandecolorado</strong>
+                  <div class="d-flex align-items-center gap-2">
+                    <a
+                      [href]="instagramUrl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-social-chip btn-instagram"
+                      title="Instagram da ADEV"
+                    >
+                      <i class="fa-brands fa-instagram me-1"></i>
+                      <span>Instagram</span>
+                    </a>
+                    <a
+                      [href]="youtubeUrl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-social-chip btn-youtube"
+                      title="YouTube da ADEV"
+                    >
+                      <i class="fa-brands fa-youtube me-1"></i>
+                      <span>YouTube</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nota de Horários dos Cultos -->
+          <div class="cultos-schedule-pill p-3 mt-3">
+            <div class="d-flex align-items-center gap-2 text-muted small">
+              <i class="fa-regular fa-clock text-warning flex-shrink-0"></i>
+              <span><strong>Cultos:</strong> Quintas às 19:30 | Domingos às 09:00 e 19:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna da Direita: Mapa Interativo do Google Maps -->
+        <div class="col-12 col-lg-7">
+          <div class="map-card-wrapper h-100">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500!2d-47.8469841!3d-15.6690609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a38b21113e2cd%3A0x7ac9b442e17ada1!2sADEVGC%20-%20IGREJA%20ASSEMBLEIA%20DE%20DEUS!5e0!3m2!1spt-BR!2sbr"
+              class="map-frame"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localização da Igreja Assembleia de Deus Grande Colorado no Google Maps"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fundo decorativo curvo no canto inferior direito -->
+      <svg
+        class="about-decor-corner"
+        viewBox="0 0 280 190"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M280 0C280 104.934 194.934 190 90 190H0V190H280V0Z"
+          fill="#f9a728"
+          fill-opacity="0.04"
+        />
+        <path
+          d="M280 50C280 127.32 217.32 190 140 190H0V190H280V50Z"
+          fill="#0e2032"
+          fill-opacity="0.02"
+        />
+      </svg>
+    </div>
+  </div>
+</section>
