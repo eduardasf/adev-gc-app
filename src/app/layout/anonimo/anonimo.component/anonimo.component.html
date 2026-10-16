@@ -1,4 +1,24 @@
-<div class="layout-wrapper d-flex flex-column min-vh-100">
+<div class="layout-wrapper d-flex flex-column min-vh-100 position-relative">
+  <!-- Fundo com Linhas Orgânicas Onduladas (Vento sobre os Campos de Trigo) -->
+  <div class="organic-waves-bg" aria-hidden="true">
+    <svg class="waves-svg" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ondas Superiores Suaves -->
+      <path d="M-100 160 C 260 60, 560 260, 920 120 C 1220 10, 1380 140, 1600 80" stroke="rgba(249, 167, 40, 0.18)" stroke-width="1.5" />
+      <path d="M-100 200 C 280 100, 580 300, 940 160 C 1240 50, 1400 180, 1600 120" stroke="rgba(249, 167, 40, 0.10)" stroke-width="1.2" stroke-dasharray="6 4" />
+      <path d="M-100 240 C 300 140, 600 340, 960 200 C 1260 90, 1420 220, 1600 160" stroke="rgba(14, 32, 50, 0.05)" stroke-width="1" />
+
+      <!-- Ondas Centrais (Brisa & Colinas) -->
+      <path d="M-100 460 C 240 560, 620 360, 1000 500 C 1280 600, 1440 420, 1600 460" stroke="rgba(249, 167, 40, 0.16)" stroke-width="1.5" />
+      <path d="M-100 500 C 260 600, 640 400, 1020 540 C 1300 640, 1460 460, 1600 500" stroke="rgba(14, 32, 50, 0.06)" stroke-width="1.2" />
+      <path d="M-100 540 C 280 640, 660 440, 1040 580 C 1320 680, 1480 500, 1600 540" stroke="rgba(249, 167, 40, 0.08)" stroke-width="1" stroke-dasharray="8 6" />
+
+      <!-- Ondas Inferiores Conduzindo aos Ramos de Trigo -->
+      <path d="M-100 700 C 340 600, 700 800, 1100 680 C 1340 600, 1480 720, 1600 670" stroke="rgba(249, 167, 40, 0.18)" stroke-width="1.6" />
+      <path d="M-100 740 C 360 640, 720 840, 1120 720 C 1360 640, 1500 760, 1600 710" stroke="rgba(14, 32, 50, 0.07)" stroke-width="1.2" />
+      <path d="M-100 780 C 380 680, 740 880, 1140 760 C 1380 680, 1520 800, 1600 750" stroke="rgba(249, 167, 40, 0.10)" stroke-width="1" />
+    </svg>
+  </div>
+
   <header class="layout-header">
     <div class="container d-flex align-items-center justify-content-between py-2 py-md-4 position-relative">
       <a routerLink="/" class="brand-link d-flex align-items-center gap-3 text-decoration-none">
@@ -46,8 +66,25 @@
   <div class="mobile-backdrop d-lg-none" (click)="closeMenu()"></div>
   }
 
-  <main class="layout-main flex-grow-1">
+  <main class="layout-main flex-grow-1 position-relative">
     <router-outlet></router-outlet>
+
+    <!-- Ramos de trigo decorativos apenas nos cantos inferiores acima do footer -->
+    <div class="wheat-footer-corners" aria-hidden="true">
+      <!-- Canto Inferior Esquerdo -->
+      <div class="wheat-corner wheat-corner-left">
+        <img src="assets/img/trigo.png" class="wheat-stalk stalk-1" alt="" />
+        <img src="assets/img/trigo.png" class="wheat-stalk stalk-2" alt="" />
+        <img src="assets/img/trigo.png" class="wheat-stalk stalk-3" alt="" />
+      </div>
+
+      <!-- Canto Inferior Direito -->
+      <div class="wheat-corner wheat-corner-right">
+        <img src="assets/img/trigo.png" class="wheat-stalk stalk-1" alt="" />
+        <img src="assets/img/trigo.png" class="wheat-stalk stalk-2" alt="" />
+        <img src="assets/img/trigo.png" class="wheat-stalk stalk-3" alt="" />
+      </div>
+    </div>
   </main>
 
   <footer class="layout-footer w-100">

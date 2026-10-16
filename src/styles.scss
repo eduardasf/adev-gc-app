@@ -134,10 +134,12 @@ samp {
 }
 
 body {
-  background-color: $gray;
+  background: linear-gradient(180deg, #ffffff 0%, #fbf9f5 35%, #f6f5f0 70%, #f3f1eb 100%);
+  background-attachment: fixed;
   color: $navy_blue;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 // ==========================================================================

@@ -4,6 +4,186 @@ $gray: #f6f6f6;
 
 .layout-wrapper {
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// ==========================================
+// Fundo de Ondas Orgânicas Fluidas (Vento & Colinas de Trigo)
+// ==========================================
+.organic-waves-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(249, 167, 40, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 88% 75%, rgba(249, 167, 40, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 45%, rgba(14, 32, 50, 0.015) 0%, transparent 60%);
+
+  .waves-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+}
+
+// ==========================================
+// Ramos de Trigo Decorativos (Apenas Cantos Inferiores Acima do Footer)
+// ==========================================
+.wheat-footer-corners {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 460px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  user-select: none;
+
+  .wheat-corner {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 48%;
+    pointer-events: none;
+  }
+
+  .wheat-stalk {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    object-fit: contain;
+    transform-origin: bottom center;
+    transition: opacity 0.3s ease;
+  }
+
+  // Canto Inferior Esquerdo (Cluster de 3 ramos subindo)
+  .wheat-corner-left {
+    left: 0;
+
+    .stalk-1 {
+      bottom: -20px;
+      left: -35px;
+      width: 360px;
+      transform: rotate(34deg);
+      opacity: 0.32;
+    }
+
+    .stalk-2 {
+      bottom: -10px;
+      left: 45px;
+      width: 290px;
+      transform: rotate(18deg);
+      opacity: 0.25;
+    }
+
+    .stalk-3 {
+      bottom: 0px;
+      left: 115px;
+      width: 230px;
+      transform: rotate(6deg);
+      opacity: 0.18;
+    }
+  }
+
+  // Canto Inferior Direito (Cluster de 3 ramos subindo espelhado)
+  .wheat-corner-right {
+    right: 0;
+
+    .stalk-1 {
+      bottom: -20px;
+      right: -35px;
+      width: 360px;
+      transform: rotate(-34deg) scaleX(-1);
+      opacity: 0.32;
+    }
+
+    .stalk-2 {
+      bottom: -10px;
+      right: 45px;
+      width: 290px;
+      transform: rotate(-18deg) scaleX(-1);
+      opacity: 0.25;
+    }
+
+    .stalk-3 {
+      bottom: 0px;
+      right: 115px;
+      width: 230px;
+      transform: rotate(-6deg) scaleX(-1);
+      opacity: 0.18;
+    }
+  }
+
+  // Adaptação Tablet
+  @media (max-width: 991.98px) {
+    height: 380px;
+
+    .wheat-corner-left {
+      .stalk-1 { width: 280px; left: -30px; opacity: 0.28; }
+      .stalk-2 { width: 220px; left: 35px; opacity: 0.20; }
+      .stalk-3 { width: 180px; left: 90px; opacity: 0.15; }
+    }
+
+    .wheat-corner-right {
+      .stalk-1 { width: 280px; right: -30px; opacity: 0.28; }
+      .stalk-2 { width: 220px; right: 35px; opacity: 0.20; }
+      .stalk-3 { width: 180px; right: 90px; opacity: 0.15; }
+    }
+  }
+
+  // Adaptação Mobile (Visual limpo, delicado e sem cobrir informações)
+  @media (max-width: 575.98px) {
+    height: 240px;
+
+    .stalk-3 {
+      display: none;
+    }
+
+    .wheat-corner-left {
+      .stalk-1 {
+        bottom: -15px;
+        left: -30px;
+        width: 180px;
+        opacity: 0.22;
+        transform: rotate(30deg);
+      }
+
+      .stalk-2 {
+        bottom: -5px;
+        left: 20px;
+        width: 135px;
+        opacity: 0.16;
+        transform: rotate(15deg);
+      }
+    }
+
+    .wheat-corner-right {
+      .stalk-1 {
+        bottom: -15px;
+        right: -30px;
+        width: 180px;
+        opacity: 0.22;
+        transform: rotate(-30deg) scaleX(-1);
+      }
+
+      .stalk-2 {
+        bottom: -5px;
+        right: 20px;
+        width: 135px;
+        opacity: 0.16;
+        transform: rotate(-15deg) scaleX(-1);
+      }
+    }
+  }
 }
 
 .layout-header {
@@ -16,6 +196,8 @@ $gray: #f6f6f6;
 
 .layout-main {
   padding: 0;
+  position: relative;
+  z-index: 1;
 }
 
 // Logo

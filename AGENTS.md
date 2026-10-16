@@ -22,8 +22,10 @@ As cores da igreja devem ser **rigorosamente respeitadas**. Nunca use cores gen�
   Usado para títulos, textos principais, botões outline secundários e rodapés escuros.
 - **Amarelo / Dourado Oficial (`$yellow`):** `#f9a728`  
   Usado para tags de seção, ícones temáticos, botões de ação primários (`.btn-pill-yellow`), bordas ativas e destaques.
-- **Fundos Neutros:**  
-  - Fundo geral: `#ffffff` e tons ultra suaves de cinza/bege (`#f8fafc`, `#fef8eb` para caixas douradas sutis).
+- **Fundos Neutros & Elementos Temáticos de Fundo:**  
+  - Fundo geral do body: Gradiente vertical acetinado e aquecido (`linear-gradient(180deg, #ffffff 0%, #fbf9f5 35%, #f6f5f0 70%, #f3f1eb 100%)`) com fixação suave, eliminando a cor cinza chapada.
+  - **Ondas Orgânicas Fluidas (`.organic-waves-bg`):** Linhas topográficas e vetoriais em SVG (`stroke` dourado e navy translúcido) fluindo sutilmente pelo fundo, evocando o vento soprando sobre as colinas e os campos de trigo.
+  - **Ramos de Trigo Decorativos (`src/assets/img/trigo.png`):** Posicionados exclusivamente nos **cantos inferiores direito e esquerdo diretamente acima do footer** (`.wheat-footer-corners`), com `pointer-events: none` e sem poluir o restante da tela ou cobrir o conteúdo central.
 - **Tipografia:**  
   - Títulos e Destaques: `Poppins` (`font-poppins`), `weight: 600` e `700`.
   - Corpo de Texto: `Inter` / `sans-serif`.
