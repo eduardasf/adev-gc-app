@@ -1,0 +1,165 @@
+<section class="section-ministerios pt-4 pt-md-5 pb-5">
+  <div class="container">
+    <!-- Cabeçalho da Seção (Alinhado à esquerda no padrão do site) -->
+    <div class="row mb-3 mb-md-4">
+      <div class="col-12 text-start">
+        <div class="titulo-secao mb-2">
+          <h5 class="tag-texto font-poppins">CORPO DE CRISTO</h5>
+        </div>
+        <h2 class="secao-titulo font-poppins mb-2">
+          Nossos Ministérios e Frentes de Atuação
+        </h2>
+        <p class="secao-subtitulo mb-0">
+          Encontre onde servir, crescer e caminhar em comunhão com a família da fé.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card Principal de Ministérios (Mesmo padrão visual da Home e Eventos) -->
+    <div class="ministerios-main-card">
+      <!-- Citação Bíblica Editorial -->
+      <blockquote class="verse-quote mb-4">
+        <p class="verse-text font-poppins mb-1">
+          “Cada um exerça o dom que recebeu na edificação dos outros, como bons despenseiros da graça de Deus.”
+        </p>
+        <cite class="verse-cite font-poppins">— 1 Pedro 4:10</cite>
+      </blockquote>
+
+      <!-- Abas de Filtro (3 colunas estáticas no mobile, sem arrastar) -->
+      <div class="filter-tabs d-flex align-items-center flex-wrap gap-2 mb-4">
+        <button
+          type="button"
+          class="tab-btn font-poppins"
+          [class.active]="categoriaAtiva === 'todos'"
+          (click)="setCategoria('todos')"
+        >
+          <i class="fa-solid fa-layer-group"></i>
+          <span>TODOS</span>
+        </button>
+
+        <button
+          type="button"
+          class="tab-btn font-poppins"
+          [class.active]="categoriaAtiva === 'geracoes'"
+          (click)="setCategoria('geracoes')"
+        >
+          <i class="fa-solid fa-people-roof"></i>
+          <span class="d-none d-sm-inline">GERAÇÕES & FAMÍLIA</span>
+          <span class="d-inline d-sm-none">GERAÇÕES</span>
+        </button>
+
+        <button
+          type="button"
+          class="tab-btn font-poppins"
+          [class.active]="categoriaAtiva === 'ministerios'"
+          (click)="setCategoria('ministerios')"
+        >
+          <i class="fa-solid fa-hands-holding-child"></i>
+          <span class="d-none d-sm-inline">MINISTÉRIOS GERAIS</span>
+          <span class="d-inline d-sm-none">MINISTÉRIOS</span>
+        </button>
+      </div>
+
+      <!-- Grid de Ministérios (Cards Limpos e Expansíveis) -->
+      <div class="row g-3">
+        @for (m of ministeriosFiltrados; track m.id; let i = $index) {
+        <div class="col-12 col-lg-6">
+          <div
+            class="ministry-card"
+            [class.expanded]="m.aberto"
+            (click)="toggleMinisterio(i)"
+          >
+            <!-- Linha Resumo do Ministério -->
+            <div class="d-flex align-items-center justify-content-between p-3">
+              <div class="ministry-badge d-flex align-items-center justify-content-center">
+                <i [class]="m.icone"></i>
+              </div>
+
+              <div class="ministry-info flex-grow-1 ms-3">
+                <h4 class="ministry-name font-poppins mb-1">
+                  {{ m.nome }}
+                </h4>
+                <div class="ministry-schedule d-flex align-items-center gap-2 text-muted small">
+                  <i class="fa-regular fa-clock text-warning"></i>
+                  <span>{{ m.encontros }}</span>
+                </div>
+              </div>
+
+              <div class="ministry-chevron" [class.rotate]="m.aberto">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+
+            <!-- Detalhes Expansíveis (Aparecem suavemente ao clicar) -->
+            @if (m.aberto) {
+            <div class="ministry-details px-3 pb-3">
+              <p class="mb-2 text-muted small">
+                {{ m.descricao }}
+              </p>
+
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top border-light-subtle flex-wrap gap-2">
+                <span class="badge-leader-clean">
+                  <i class="fa-solid fa-user-check text-warning me-1"></i>
+                  <span>Liderança: <strong>{{ m.lider }}</strong></span>
+                </span>
+
+                <button
+                  type="button"
+                  class="btn-invite-clean"
+                  (click)="solicitarParticipacao(m, $event)"
+                  title="Quero servir neste ministério"
+                >
+                  <i class="fa-brands fa-whatsapp text-success me-1"></i>
+                  <span>Quero Participar</span>
+                </button>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+        }
+      </div>
+
+      <!-- Chamada Pastoral Suave no Rodapé -->
+      <div class="verse-quote mt-4 mt-md-5 mb-0 d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
+        <div>
+          <h4 class="cta-title font-poppins mb-1">
+            Deseja servir na igreja?
+          </h4>
+          <p class="text-muted small mb-0">
+            Fale com a nossa liderança pastoral para entender como você pode se envolver e usar seus talentos.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="btn-pill-yellow flex-shrink-0"
+          (click)="falarComLideranca()"
+        >
+          <i class="fa-brands fa-whatsapp text-white me-1"></i>
+          <span>FALAR NO WHATSAPP</span>
+        </button>
+      </div>
+
+      <!-- Fundo decorativo curvo no canto inferior direito -->
+      <svg
+        class="about-decor-corner"
+        viewBox="0 0 280 190"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M280 0C280 104.934 194.934 190 90 190H0V190H280V0Z"
+          fill="#f9a728"
+          fill-opacity="0.04"
+        />
+        <path
+          d="M280 50C280 127.32 217.32 190 140 190H0V190H280V50Z"
+          fill="#0e2032"
+          fill-opacity="0.02"
+        />
+      </svg>
+    </div>
+  </div>
+</section>

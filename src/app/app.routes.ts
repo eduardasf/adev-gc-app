@@ -3,6 +3,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { AnonimoComponent } from './layout/anonimo/anonimo.component/anonimo.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { MinisteriosComponent } from './components/ministerios/ministerios.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,10 @@ export const routes: Routes = [
       {
         path: 'eventos',
         component: EventosComponent,
+      },
+      {
+        path: 'ministerios',
+        component: MinisteriosComponent,
       },
     ],
   },
