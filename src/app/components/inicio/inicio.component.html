@@ -32,12 +32,13 @@
           Juntos em adoração, comunhão e crescimento na Palavra de Deus.
         </p>
 
-        <!-- Abas de filtro -->
-        <div class="filter-tabs d-flex align-items-center gap-3 mb-4">
+        <!-- Abas de filtro (Segmentado em 2 colunas no mobile, sem arrastar) -->
+        <div class="filter-tabs d-flex align-items-center gap-2 mb-4">
           <button type="button" class="tab-btn font-poppins" [class.active]="abaAtiva === 'horarios'"
             (click)="setAba('horarios')">
             <i class="fa-solid fa-calendar-days"></i>
-            <span>HORÁRIOS FIXOS</span>
+            <span class="d-none d-sm-inline">HORÁRIOS FIXOS</span>
+            <span class="d-inline d-sm-none">HORÁRIOS</span>
           </button>
 
           <button type="button" class="tab-btn font-poppins" [class.active]="abaAtiva === 'eventos'"
@@ -53,33 +54,40 @@
           @for (item of horarios; track item.titulo; let i = $index) {
           <div class="schedule-card" [class.expanded]="item.aberto" (click)="toggleHorario(i)">
             <div class="d-flex align-items-center justify-content-between p-3">
-              <!-- Tag com o Dia -->
-              <div class="day-badge d-flex align-items-center gap-2">
-                <i class="fa-regular fa-calendar"></i>
-                <span>{{ item.dia }}</span>
+              <div class="day-badge d-flex align-items-center justify-content-center">
+                <span class="day-text font-poppins">{{ item.dia }}</span>
               </div>
 
-              <!-- Detalhes do Culto -->
               <div class="schedule-info flex-grow-1 ms-3">
+                <span class="schedule-freq text-muted small d-block mb-1">{{ item.frequencia }}</span>
                 <h4 class="schedule-name font-poppins mb-1">
                   {{ item.titulo }}
                 </h4>
-                <div class="schedule-hour d-flex align-items-center gap-2">
-                  <i class="fa-regular fa-clock"></i>
+                <div class="schedule-hour d-flex align-items-center gap-2 text-muted small">
+                  <i class="fa-regular fa-clock text-warning"></i>
                   <span>{{ item.horario }}</span>
                 </div>
               </div>
 
-              <!-- Seta chevron -->
               <div class="schedule-chevron" [class.rotate]="item.aberto">
                 <i class="fa-solid fa-chevron-down"></i>
               </div>
             </div>
 
-            <!-- Detalhes ao expandir -->
             @if (item.aberto) {
             <div class="schedule-details px-3 pb-3">
-              <p class="mb-0 text-muted small">{{ item.descricao }}</p>
+              <p class="mb-2 text-muted small">{{ item.descricao }}</p>
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top border-light-subtle">
+                <span class="badge-status-clean">
+                  <i class="fa-solid fa-circle-check text-warning me-1"></i>Culto Presencial
+                </span>
+                <button type="button" class="btn-invite-clean"
+                  (click)="compartilharWhatsApp(item.titulo, item.horario, item.dia, $event)"
+                  title="Convidar no WhatsApp">
+                  <i class="fa-brands fa-whatsapp text-success me-1"></i>
+                  <span>Convidar</span>
+                </button>
+              </div>
             </div>
             }
           </div>
@@ -102,26 +110,46 @@
         <!-- Lista de Eventos Especiais -->
         @if (abaAtiva === "eventos") {
         <div class="special-events-list d-flex flex-column gap-3">
-          @for (ev of eventosEspeciais; track ev.titulo) {
-          <div class="schedule-card p-3">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="day-badge d-flex flex-column align-items-center justify-content-center p-2 text-center"
-                style="min-width: 60px">
-                <span class="fs-6 fw-bold lh-1">{{ ev.data }}</span>
-                <span class="small" style="font-size: 0.72rem">{{
-                  ev.mes
-                  }}</span>
+          @for (ev of eventosEspeciais; track ev.titulo; let i = $index) {
+          <div class="schedule-card" [class.card-destaque]="ev.destaque" [class.expanded]="ev.aberto" (click)="toggleEvento(i)">
+            <div class="d-flex align-items-center justify-content-between p-3">
+              <div class="day-badge d-flex flex-column align-items-center justify-content-center text-center">
+                <span class="ev-day fw-bold lh-1 font-poppins">{{ ev.data }}</span>
+                <span class="ev-month small font-poppins">{{ ev.mes }}</span>
               </div>
+
               <div class="schedule-info flex-grow-1 ms-3">
+                <span class="schedule-freq text-muted small d-block mb-1">{{ ev.frequencia }}</span>
                 <h4 class="schedule-name font-poppins mb-1">
                   {{ ev.titulo }}
                 </h4>
-                <div class="schedule-hour d-flex align-items-center gap-3 text-muted small">
-                  <span><i class="fa-regular fa-clock me-1"></i>{{ ev.horario }}</span>
-                  <span><i class="fa-solid fa-location-dot me-1"></i>{{ ev.local }}</span>
+                <div class="schedule-hour d-flex align-items-center gap-2 text-muted small">
+                  <i class="fa-regular fa-clock text-warning"></i>
+                  <span>{{ ev.horario }}</span>
                 </div>
               </div>
+
+              <div class="schedule-chevron" [class.rotate]="ev.aberto">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
             </div>
+
+            @if (ev.aberto) {
+            <div class="schedule-details px-3 pb-3">
+              <p class="mb-2 text-muted small">{{ ev.descricao }}</p>
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top border-light-subtle">
+                <span class="badge-status-clean">
+                  <i class="fa-solid fa-star text-warning me-1"></i>Data Especial
+                </span>
+                <button type="button" class="btn-invite-clean"
+                  (click)="compartilharWhatsApp(ev.titulo, ev.horario, ev.data + ' ' + ev.mes, $event)"
+                  title="Convidar no WhatsApp">
+                  <i class="fa-brands fa-whatsapp text-success me-1"></i>
+                  <span>Convidar</span>
+                </button>
+              </div>
+            </div>
+            }
           </div>
           } @empty {
           <div class="empty-schedule-card text-center p-4 d-flex flex-column align-items-center justify-content-center">
@@ -143,7 +171,8 @@
         <!-- Botão para Ver Agenda Completa -->
         <div class="mt-4 pt-1">
           <a routerLink="/eventos" class="btn-pill-yellow">
-            <span>VER AGENDA COMPLETA DE EVENTOS</span>
+            <span class="d-none d-sm-inline">VER AGENDA COMPLETA DE EVENTOS</span>
+            <span class="d-inline d-sm-none">VER AGENDA COMPLETA</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>

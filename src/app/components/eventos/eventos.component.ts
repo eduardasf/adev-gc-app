@@ -35,7 +35,7 @@ export class EventosComponent implements OnInit {
   horarios: HorarioCulto[] = [
     {
       dia: 'TER',
-      frequencia: 'Toda Terça-feira',
+      frequencia: 'Terça-feira',
       titulo: 'Culto de Ensino',
       horario: '19:00H',
       descricao:
@@ -44,7 +44,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'QUA',
-      frequencia: 'Toda Quarta-feira',
+      frequencia: 'Quarta-feira',
       titulo: 'Tarde de Milagres',
       horario: '15:00H',
       descricao:
@@ -53,7 +53,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'QUI',
-      frequencia: 'Toda Quinta-feira',
+      frequencia: 'Quinta-feira',
       titulo: 'Culto de Oração',
       horario: '19:30H',
       descricao:
@@ -62,7 +62,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'SÁB',
-      frequencia: 'Todo Sábado',
+      frequencia: 'Sábado',
       titulo: 'Conexão Jovem',
       horario: '19:30H',
       descricao:
@@ -71,7 +71,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'DOM',
-      frequencia: 'Todo Domingo pela manhã',
+      frequencia: 'Domingo pela manhã',
       titulo: 'Escola Bíblica Dominical (EBD)',
       horario: '09:00H',
       descricao:
@@ -80,7 +80,7 @@ export class EventosComponent implements OnInit {
     },
     {
       dia: 'DOM',
-      frequencia: 'Todo Domingo à noite',
+      frequencia: 'Domingo à noite',
       titulo: 'Culto da Família',
       horario: '19:00H',
       descricao:

@@ -1,17 +1,8 @@
 <div class="layout-wrapper d-flex flex-column min-vh-100">
   <header class="layout-header">
-    <div
-      class="container d-flex align-items-center justify-content-between py-2 py-md-4 position-relative"
-    >
-      <a
-        routerLink="/"
-        class="brand-link d-flex align-items-center gap-3 text-decoration-none"
-      >
-        <img
-          src="assets/img/logo-preta1.png"
-          alt="Logo ADEV Grande Colorado"
-          class="brand-logo"
-        />
+    <div class="container d-flex align-items-center justify-content-between py-2 py-md-4 position-relative">
+      <a routerLink="/" class="brand-link d-flex align-items-center gap-3 text-decoration-none">
+        <img src="assets/img/logo-preta1.png" alt="Logo ADEV Grande Colorado" class="brand-logo" />
 
         <div class="brand-divider"></div>
 
@@ -22,13 +13,8 @@
       </a>
 
       <!-- Botão Hambúrguer para Mobile -->
-      <button
-        class="menu-toggle d-lg-none"
-        type="button"
-        (click)="toggleMenu()"
-        [attr.aria-expanded]="isMenuOpen"
-        aria-label="Abrir menu de navegação"
-      >
+      <button class="menu-toggle d-lg-none" type="button" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen"
+        aria-label="Abrir menu de navegação">
         <span class="bar" [class.open]="isMenuOpen"></span>
         <span class="bar" [class.open]="isMenuOpen"></span>
         <span class="bar" [class.open]="isMenuOpen"></span>
@@ -38,31 +24,26 @@
       <nav class="nav-container" [class.open]="isMenuOpen">
         <ul class="nav-links d-flex align-items-center mb-0">
           @for (link of navLinks; track link.path) {
-            <li>
-              <a
-                [routerLink]="link.path"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: !!link.exact }"
-                (click)="closeMenu()"
-                >{{ link.label }}</a
-              >
-            </li>
+          <li>
+            <a [routerLink]="link.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: !!link.exact }"
+              (click)="closeMenu()">{{ link.label }}</a>
+          </li>
           }
-          <li class="li-entrar">
+          <!-- <li class="li-entrar">
             <a
               routerLink="/entrar"
               routerLinkActive="active"
               (click)="closeMenu()"
               >Entrar</a
             >
-          </li>
+          </li> -->
         </ul>
       </nav>
     </div>
   </header>
 
   @if (isMenuOpen) {
-    <div class="mobile-backdrop d-lg-none" (click)="closeMenu()"></div>
+  <div class="mobile-backdrop d-lg-none" (click)="closeMenu()"></div>
   }
 
   <main class="layout-main flex-grow-1">
@@ -74,23 +55,12 @@
       <div class="container">
         <div class="row g-4 g-lg-4">
           <div class="col-12 col-md-6 col-lg-3">
-            <a
-              routerLink="/"
-              class="footer-brand d-flex align-items-center gap-3 text-decoration-none mb-3"
-            >
-              <img
-                src="assets/img/logo-branca.png"
-                alt="Logo ADEV Grande Colorado"
-                class="footer-brand-logo"
-              />
+            <a routerLink="/" class="footer-brand d-flex align-items-center gap-3 text-decoration-none mb-3">
+              <img src="assets/img/logo-branca.png" alt="Logo ADEV Grande Colorado" class="footer-brand-logo" />
               <div class="footer-brand-divider"></div>
-              <div
-                class="footer-brand-text d-flex flex-column justify-content-center"
-              >
+              <div class="footer-brand-text d-flex flex-column justify-content-center">
                 <span class="footer-brand-title font-poppins">ADEV</span>
-                <span class="footer-brand-subtitle font-poppins"
-                  >GRANDE COLORADO</span
-                >
+                <span class="footer-brand-subtitle font-poppins">GRANDE COLORADO</span>
               </div>
             </a>
 
@@ -99,23 +69,13 @@
             </p>
 
             <div class="footer-socials d-flex align-items-center gap-3">
-              <a
-                href="https://www.instagram.com/adevgrandecolorado/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="Instagram"
-              >
+              <a href="https://www.instagram.com/adevgrandecolorado/" target="_blank" rel="noopener noreferrer"
+                class="social-btn" aria-label="Instagram">
                 <i class="fa-brands fa-instagram"></i>
               </a>
 
-              <a
-                href="https://www.youtube.com/@AdevGrandeColorado/videos"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="YouTube"
-              >
+              <a href="https://www.youtube.com/@AdevGrandeColorado/videos" target="_blank" rel="noopener noreferrer"
+                class="social-btn" aria-label="YouTube">
                 <i class="fa-brands fa-youtube"></i>
               </a>
             </div>
@@ -126,14 +86,10 @@
             <h3 class="footer-col-title font-poppins">Links rápidos</h3>
             <ul class="footer-links list-unstyled mb-0">
               @for (link of navLinks; track link.path) {
-                <li>
-                  <a
-                    [routerLink]="link.path"
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{ exact: !!link.exact }"
-                    >{{ link.label }}</a
-                  >
-                </li>
+              <li>
+                <a [routerLink]="link.path" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: !!link.exact }">{{ link.label }}</a>
+              </li>
               }
             </ul>
           </div>
@@ -146,12 +102,8 @@
               <div class="schedule-item d-flex align-items-start">
                 <div class="schedule-info">
                   <strong class="schedule-day d-block">Domingo</strong>
-                  <span class="schedule-time d-block"
-                    >09:00h – Escola Bíblica Dominical</span
-                  >
-                  <span class="schedule-time d-block"
-                    >19:00h – Culto da Família</span
-                  >
+                  <span class="schedule-time d-block">09:00h – Escola Bíblica Dominical</span>
+                  <span class="schedule-time d-block">19:00h – Culto da Família</span>
                 </div>
               </div>
 
@@ -159,9 +111,7 @@
               <div class="schedule-item d-flex align-items-start">
                 <div class="schedule-info">
                   <strong class="schedule-day d-block">Quarta-feira</strong>
-                  <span class="schedule-time d-block"
-                    >15:00h – Tarde de Milagres</span
-                  >
+                  <span class="schedule-time d-block">15:00h – Tarde de Milagres</span>
                 </div>
               </div>
 
@@ -169,9 +119,7 @@
               <div class="schedule-item d-flex align-items-start">
                 <div class="schedule-info">
                   <strong class="schedule-day d-block">Quinta-feira</strong>
-                  <span class="schedule-time d-block"
-                    >19:30h – Culto de Oração</span
-                  >
+                  <span class="schedule-time d-block">19:30h – Culto de Oração</span>
                 </div>
               </div>
 
@@ -179,9 +127,7 @@
               <div class="schedule-item d-flex align-items-start">
                 <div class="schedule-info">
                   <strong class="schedule-day d-block">Terça-feira</strong>
-                  <span class="schedule-time d-block"
-                    >19:00h – Culto de Ensino</span
-                  >
+                  <span class="schedule-time d-block">19:00h – Culto de Ensino</span>
                 </div>
               </div>
             </div>
@@ -204,12 +150,8 @@
               </div>
             </div>
 
-            <a
-              href="https://maps.google.com/?q=ADEVGC+Grande+Colorado+DF"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-como-chegar font-poppins"
-            >
+            <a href="https://maps.google.com/?q=ADEVGC+Grande+Colorado+DF" target="_blank" rel="noopener noreferrer"
+              class="btn-como-chegar font-poppins">
               <span>COMO CHEGAR</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -221,8 +163,7 @@
     <!-- Barra Inferior de Copyright -->
     <div class="footer-bottom py-3">
       <div
-        class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2 text-center text-md-start"
-      >
+        class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2 text-center text-md-start">
         <span class="footer-copy">
           © {{ currentYear }} ADEV Grande Colorado. Todos os direitos
           reservados.
