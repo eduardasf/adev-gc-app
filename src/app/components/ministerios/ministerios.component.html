@@ -10,12 +10,12 @@
           Nossos Ministérios e Frentes de Atuação
         </h2>
         <p class="secao-subtitulo mb-0">
-          Encontre onde servir, crescer e caminhar em comunhão com a família da fé.
+          Conheça as áreas da igreja onde você pode servir, florescer e caminhar em comunhão.
         </p>
       </div>
     </div>
 
-    <!-- Card Principal de Ministérios (Mesmo padrão visual da Home e Eventos) -->
+    <!-- Card Principal de Ministérios (Padrão visual integrado com Home e Sobre) -->
     <div class="ministerios-main-card">
       <!-- Citação Bíblica Editorial -->
       <blockquote class="verse-quote mb-4">
@@ -25,8 +25,8 @@
         <cite class="verse-cite font-poppins">— 1 Pedro 4:10</cite>
       </blockquote>
 
-      <!-- Abas de Filtro (3 colunas estáticas no mobile, sem arrastar) -->
-      <div class="filter-tabs d-flex align-items-center flex-wrap gap-2 mb-4">
+      <!-- Abas de Filtro (Estáticas em 3 colunas no mobile, sem arrastar) -->
+      <div class="filter-tabs d-flex align-items-center flex-wrap gap-2 mb-4 mb-md-5">
         <button
           type="button"
           class="tab-btn font-poppins"
@@ -60,86 +60,58 @@
         </button>
       </div>
 
-      <!-- Grid de Ministérios (Cards Limpos e Expansíveis) -->
-      <div class="row g-3">
-        @for (m of ministeriosFiltrados; track m.id; let i = $index) {
-        <div class="col-12 col-lg-6">
-          <div
-            class="ministry-card"
-            [class.expanded]="m.aberto"
-            (click)="toggleMinisterio(i)"
-          >
-            <!-- Linha Resumo do Ministério -->
-            <div class="d-flex align-items-center justify-content-between p-3">
-              <div class="ministry-badge d-flex align-items-center justify-content-center">
+      <!-- Grid em Formato de Cards (3 por linha no desktop, 2 no tablet, 1 no mobile) -->
+      <div class="row g-3 g-md-4">
+        @for (m of ministeriosFiltrados; track m.id) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="ministry-card d-flex flex-column h-100">
+            <!-- Topo do Card: Ícone Destaque + Badge de Categoria -->
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="card-icon-box">
                 <i [class]="m.icone"></i>
               </div>
+              <span class="card-category-badge">{{ m.categoriaBadge }}</span>
+            </div>
 
-              <div class="ministry-info flex-grow-1 ms-3">
-                <h4 class="ministry-name font-poppins mb-1">
-                  {{ m.nome }}
-                </h4>
-                <div class="ministry-schedule d-flex align-items-center gap-2 text-muted small">
-                  <i class="fa-regular fa-clock text-warning"></i>
-                  <span>{{ m.encontros }}</span>
-                </div>
+            <!-- Título do Ministério -->
+            <h3 class="ministry-title font-poppins mb-2">
+              {{ m.nome }}
+            </h3>
+
+            <!-- Descrição Objetiva e Acolhedora -->
+            <p class="ministry-desc mb-3 flex-grow-1">
+              {{ m.descricao }}
+            </p>
+
+            <!-- Metadados / Encontros e Liderança -->
+            <div class="ministry-meta-box pt-3 mb-3 border-top border-light-subtle">
+              <div class="meta-row d-flex align-items-center gap-2 mb-1 text-muted small">
+                <i class="fa-regular fa-clock text-warning flex-shrink-0"></i>
+                <span class="text-truncate" [title]="m.encontros">{{ m.encontros }}</span>
               </div>
-
-              <div class="ministry-chevron" [class.rotate]="m.aberto">
-                <i class="fa-solid fa-chevron-down"></i>
+              <div class="meta-row d-flex align-items-center gap-2 text-muted small">
+                <i class="fa-regular fa-user text-warning flex-shrink-0"></i>
+                <span class="text-truncate">Liderança: <strong>{{ m.lider }}</strong></span>
               </div>
             </div>
 
-            <!-- Detalhes Expansíveis (Aparecem suavemente ao clicar) -->
-            @if (m.aberto) {
-            <div class="ministry-details px-3 pb-3">
-              <p class="mb-2 text-muted small">
-                {{ m.descricao }}
-              </p>
-
-              <div class="d-flex align-items-center justify-content-between pt-2 border-top border-light-subtle flex-wrap gap-2">
-                <span class="badge-leader-clean">
-                  <i class="fa-solid fa-user-check text-warning me-1"></i>
-                  <span>Liderança: <strong>{{ m.lider }}</strong></span>
-                </span>
-
-                <button
-                  type="button"
-                  class="btn-invite-clean"
-                  (click)="solicitarParticipacao(m, $event)"
-                  title="Quero servir neste ministério"
-                >
-                  <i class="fa-brands fa-whatsapp text-success me-1"></i>
-                  <span>Quero Participar</span>
-                </button>
-              </div>
-            </div>
-            }
+            <!-- Botão de Ação Direto no Card -->
+            <button
+              type="button"
+              class="btn-card-action font-poppins w-100 mt-auto"
+              (click)="solicitarParticipacao(m)"
+              title="Quero participar deste ministério"
+            >
+              <i class="fa-brands fa-whatsapp text-success me-2"></i>
+              <span>Quero Participar</span>
+              <i class="fa-solid fa-arrow-right ms-auto"></i>
+            </button>
           </div>
         </div>
         }
       </div>
 
-      <!-- Chamada Pastoral Suave no Rodapé -->
-      <div class="verse-quote mt-4 mt-md-5 mb-0 d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
-        <div>
-          <h4 class="cta-title font-poppins mb-1">
-            Deseja servir na igreja?
-          </h4>
-          <p class="text-muted small mb-0">
-            Fale com a nossa liderança pastoral para entender como você pode se envolver e usar seus talentos.
-          </p>
-        </div>
 
-        <button
-          type="button"
-          class="btn-pill-yellow flex-shrink-0"
-          (click)="falarComLideranca()"
-        >
-          <i class="fa-brands fa-whatsapp text-white me-1"></i>
-          <span>FALAR NO WHATSAPP</span>
-        </button>
-      </div>
 
       <!-- Fundo decorativo curvo no canto inferior direito -->
       <svg

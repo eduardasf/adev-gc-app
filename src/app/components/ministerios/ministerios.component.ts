@@ -6,11 +6,11 @@ export interface Ministerio {
   id: string;
   nome: string;
   categoria: 'geracoes' | 'ministerios';
+  categoriaBadge: string;
   icone: string;
   encontros: string;
   lider: string;
   descricao: string;
-  aberto?: boolean;
 }
 
 @Component({
@@ -28,83 +28,93 @@ export class MinisteriosComponent {
   ministerios: Ministerio[] = [
     {
       id: 'louvor',
-      nome: 'Ministério de Louvor & Adoração',
+      nome: 'Louvor & Adoração',
       categoria: 'ministerios',
+      categoriaBadge: 'Música & Artes',
       icone: 'fa-solid fa-music',
-      encontros: 'Quintas às 19:30 e Domingos às 19:00',
+      encontros: 'Quintas 19:30 e Domingos 19:00',
       lider: 'Camila Silva',
-      descricao: 'Responsável pela música e adoração congregacional nos cultos, integrando cantores e instrumentistas na presença de Deus.',
-      aberto: true
+      descricao: 'Condução musical dos cultos, unindo cantores e instrumentistas no louvor congregacional com fundamentação bíblica.'
     },
     {
       id: 'jovens',
       nome: 'Juventude ADEV',
       categoria: 'geracoes',
+      categoriaBadge: 'Jovens',
       icone: 'fa-solid fa-fire',
       encontros: 'Sábados às 19:30',
       lider: 'Lucas Gabriel',
-      descricao: 'Comunhão, discipulado e eventos dinâmicos para conectar jovens e adolescentes à Palavra de Deus.',
-      aberto: false
+      descricao: 'Comunhão, discipulado e encontros dinâmicos para fortalecer a fé de jovens e adolescentes no Evangelho.'
     },
     {
       id: 'mulheres',
-      nome: 'Ministério de Mulheres',
+      nome: 'Ministério Feminino',
       categoria: 'geracoes',
+      categoriaBadge: 'Mulheres',
       icone: 'fa-solid fa-heart',
-      encontros: 'Terças às 19:30 e encontros mensais',
+      encontros: 'Terças 19:30 e encontros mensais',
       lider: 'Pra. Débora Andrade',
-      descricao: 'Fortalecimento espiritual feminino, mentoria e apoio às famílias através da oração e da comunhão cristã.',
-      aberto: false
+      descricao: 'Acolhimento, mentoria bíblica e intercessão contínua pelas famílias e pelas necessidades da comunidade.'
     },
     {
       id: 'homens',
       nome: 'Ministério de Homens',
       categoria: 'geracoes',
+      categoriaBadge: 'Homens',
       icone: 'fa-solid fa-shield-halved',
       encontros: '1º sábado do mês às 08:00',
       lider: 'Pr. Carlos Andrade',
-      descricao: 'Encorajamento e comunhão masculina, fortalecendo os homens no sacerdócio do lar e na vida cristã.',
-      aberto: false
+      descricao: 'Encorajamento e comunhão masculina, desenvolvendo o sacerdócio no lar e a integridade na caminhada cristã.'
     },
     {
       id: 'kids',
-      nome: 'ADEV Kids (Ministério Infantil)',
+      nome: 'ADEV Kids',
       categoria: 'geracoes',
+      categoriaBadge: 'Infantil',
       icone: 'fa-solid fa-child-reaching',
       encontros: 'Domingos às 09:00 e 19:00',
-      lider: 'Equipe Educadoras ADEV Kids',
-      descricao: 'Ensino bíblico lúdico e seguro para crianças de todas as idades durante os cultos e na Escola Dominical.',
-      aberto: false
+      lider: 'Educadoras ADEV Kids',
+      descricao: 'Cuidado seguro e ensino didático das Sagradas Escrituras em salinhas preparadas com carinho para cada faixa etária.'
     },
     {
       id: 'diaconia',
       nome: 'Ação Social & Diaconia',
       categoria: 'ministerios',
+      categoriaBadge: 'Serviço',
       icone: 'fa-solid fa-hand-holding-heart',
       encontros: 'Recepção nos cultos e ações sociais',
       lider: 'Diácono André Santos',
-      descricao: 'Acolhimento caloroso aos membros e visitantes, suporte aos cultos e assistência a famílias da comunidade.',
-      aberto: false
+      descricao: 'Acolhimento afetuoso nos cultos, suporte operacional e assistência com cestas básicas às famílias da comunidade.'
     },
     {
       id: 'ensino',
-      nome: 'Escola Bíblica Dominical (EBD)',
+      nome: 'Escola Dominical (EBD)',
       categoria: 'ministerios',
+      categoriaBadge: 'Ensino Bíblico',
       icone: 'fa-solid fa-book-bible',
-      encontros: 'Domingos às 09:00',
+      encontros: 'Domingos das 09:00 às 10:30',
       lider: 'Pr. Marcos Oliveira',
-      descricao: 'Estudo sistemático e aprofundado das Escrituras para crescimento teológico e maturidade de fé.',
-      aberto: false
+      descricao: 'Classes temáticas e estudo bíblico sistemático para todas as idades, promovendo discernimento e maturidade cristã.'
     },
     {
       id: 'comunicacao',
       nome: 'Comunicação & Mídia',
       categoria: 'ministerios',
+      categoriaBadge: 'Mídia & Redes',
       icone: 'fa-solid fa-camera',
       encontros: 'Escalas nos cultos e transmissões',
       lider: 'Equipe de Mídia ADEV',
-      descricao: 'Transmissão dos cultos no YouTube, fotografia, sonorização e divulgação do Evangelho nas redes sociais.',
-      aberto: false
+      descricao: 'Transmissão ao vivo no YouTube, sonorização, fotografia e expansão da mensagem de Cristo nas redes sociais.'
+    },
+    {
+      id: 'oracao',
+      nome: 'Intercessão & Oração',
+      categoria: 'ministerios',
+      categoriaBadge: 'Oração',
+      icone: 'fa-solid fa-hands-praying',
+      encontros: 'Vigílias e clamor semanal',
+      lider: 'Equipe Pastoral & Obreiros',
+      descricao: 'Ministério dedicado a clamar pela igreja, pela liderança, pelos lares, enfermos e pelo avivamento da comunidade.'
     }
   ];
 
@@ -119,21 +129,8 @@ export class MinisteriosComponent {
     this.categoriaAtiva = categoria;
   }
 
-  toggleMinisterio(index: number): void {
-    this.ministeriosFiltrados[index].aberto = !this.ministeriosFiltrados[index].aberto;
-  }
-
-  solicitarParticipacao(m: Ministerio, event: MouseEvent): void {
-    event.stopPropagation();
-    const mensagem = `Olá! Gostaria de saber mais informações e participar do *${m.nome}* da ADEV Grande Colorado.`;
-    const url = `https://wa.me/${this.whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
-    if (typeof window !== 'undefined') {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-  }
-
-  falarComLideranca(): void {
-    const mensagem = 'Olá! Gostaria de conversar com a liderança pastoral para entender como posso servir e me envolver nos ministérios da ADEV.';
+  solicitarParticipacao(m: Ministerio): void {
+    const mensagem = `Olá! Tenho interesse em participar e servir no *${m.nome}* da ADEV Grande Colorado.`;
     const url = `https://wa.me/${this.whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
     if (typeof window !== 'undefined') {
       window.open(url, '_blank', 'noopener,noreferrer');
