@@ -118,13 +118,13 @@
           </div>
         </div>
 
-        <!-- Coluna 2: Chave PIX em CNPJ + Dados da Conta -->
+        <!-- Coluna 2: Chave PIX em E-mail + Dados da Conta Sicredi -->
         <div class="col-12 col-lg-7">
           <div class="contrib-card h-100 d-flex flex-column justify-content-between p-4">
             <div>
               <div class="d-flex align-items-center justify-content-between mb-3">
                 <span class="badge-pix-tipo font-poppins">
-                  <i class="fa-solid fa-key me-1"></i> CHAVE PIX EM CNPJ
+                  <i class="fa-solid fa-envelope me-1"></i> CHAVE PIX EM E-MAIL
                 </span>
 
                 <span class="badge-status-seguro text-muted small">
@@ -133,17 +133,17 @@
               </div>
 
               <h4 class="pix-title font-poppins mb-2">
-                Transferência via Chave CNPJ
+                Transferência via Chave Pix (E-mail)
               </h4>
               <p class="pix-sub text-muted small mb-3">
-                Utilize a chave CNPJ oficial da igreja para registrar dízimos, ofertas e doações voluntárias.
+                Utilize a chave Pix oficial por e-mail da igreja para transferir dízimos, ofertas e doações voluntárias.
               </p>
 
               <!-- Caixa de Cópia da Chave PIX -->
               <div class="pix-copy-box p-3 mb-4">
-                <span class="d-block pix-label text-muted small mb-1">Chave PIX (CNPJ):</span>
+                <span class="d-block pix-label text-muted small mb-1">Chave PIX (E-mail):</span>
                 <div class="d-flex align-items-center justify-content-between gap-2 flex-wrap flex-sm-nowrap">
-                  <span class="pix-key-text font-poppins">{{ chavePixCnpj }}</span>
+                  <span class="pix-key-text font-poppins">{{ chavePixEmail }}</span>
 
                   <button
                     type="button"
@@ -162,16 +162,31 @@
                 </div>
               </div>
 
-              <!-- Detalhes do Favorecido -->
+              <!-- Detalhes da Conta Sicredi e Favorecido -->
               <div class="pix-details-list d-flex flex-column gap-2 mb-3">
                 <div class="detail-row d-flex align-items-center justify-content-between py-1 border-bottom border-light-subtle">
-                  <span class="text-muted small">Titular / Favorecido:</span>
-                  <strong class="font-poppins text-navy small">{{ titularConta }}</strong>
+                  <span class="text-muted small">Banco:</span>
+                  <strong class="font-poppins text-navy small">{{ banco }}</strong>
+                </div>
+
+                <div class="detail-row d-flex align-items-center justify-content-between py-1 border-bottom border-light-subtle">
+                  <span class="text-muted small">Agência:</span>
+                  <strong class="font-poppins text-navy small">{{ agencia }}</strong>
+                </div>
+
+                <div class="detail-row d-flex align-items-center justify-content-between py-1 border-bottom border-light-subtle">
+                  <span class="text-muted small">Conta Corrente:</span>
+                  <strong class="font-poppins text-navy small">{{ conta }}</strong>
                 </div>
 
                 <div class="detail-row d-flex align-items-center justify-content-between py-1 border-bottom border-light-subtle">
                   <span class="text-muted small">Tipo de Chave:</span>
                   <strong class="font-poppins text-navy small">{{ tipoChave }}</strong>
+                </div>
+
+                <div class="detail-row d-flex align-items-center justify-content-between py-1 border-bottom border-light-subtle">
+                  <span class="text-muted small">Titular / Favorecido:</span>
+                  <strong class="font-poppins text-navy small">{{ titularConta }}</strong>
                 </div>
 
                 <div class="detail-row d-flex align-items-center justify-content-between py-1">
@@ -231,7 +246,7 @@
                 <strong class="font-poppins text-navy small">Onde e Quando Entregar:</strong>
               </div>
               <p class="text-muted small mb-0">
-                Diretamente no templo nos dias de culto (Quintas às 19:30 e Domingos às 09:00 e 19:00), ou combinando o ponto de entrega com a nossa equipe.
+                Diretamente no templo durante os dias e horários de culto (<a routerLink="/eventos" class="agenda-link">ver nossa agenda completa</a>), ou combinando o ponto de entrega com a nossa equipe.
               </p>
             </div>
           </div>

@@ -132,13 +132,29 @@
             </div>
           </div>
 
-          <!-- Nota de Horários dos Cultos -->
-          <div class="cultos-schedule-pill p-3 mt-3">
-            <div class="d-flex align-items-center gap-2 text-muted small">
-              <i class="fa-regular fa-clock text-warning flex-shrink-0"></i>
-              <span><strong>Cultos:</strong> Quintas às 19:30 | Domingos às 09:00 e 19:00</span>
+          <!-- Chamada para Ver Agenda e Horários de Culto -->
+          <a
+            routerLink="/eventos"
+            class="schedule-invite-banner d-flex align-items-center justify-content-between p-3 mt-3 text-decoration-none"
+            title="Ver horários dos cultos e agenda completa"
+          >
+            <div class="d-flex align-items-center gap-3">
+              <div class="schedule-invite-icon">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <div class="schedule-invite-text">
+                <strong class="d-block font-poppins invite-title">
+                  Horários dos Cultos e Eventos
+                </strong>
+                <span class="d-block text-muted small invite-sub">
+                  Confira todos os nossos cultos e a agenda completa
+                </span>
+              </div>
             </div>
-          </div>
+            <div class="schedule-invite-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
         </div>
 
         <!-- Coluna da Direita: Mapa Interativo do Google Maps -->

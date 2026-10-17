@@ -134,7 +134,7 @@ export class InicioComponent implements OnInit, OnDestroy {
       dia: 'TER',
       frequencia: 'Terça-feira',
       titulo: 'Culto de Ensino',
-      horario: '19:00H',
+      horario: '19:30H',
       descricao:
         'Estudo aprofundado das Sagradas Escrituras para edificação, fortalecimento na fé e crescimento espiritual de toda a igreja.',
       aberto: false,
@@ -155,15 +155,6 @@ export class InicioComponent implements OnInit, OnDestroy {
       horario: '19:30H',
       descricao:
         'Momento de intercessão pelas famílias, busca pelo Espírito Santo e intimidade com Deus.',
-      aberto: false,
-    },
-    {
-      dia: 'SÁB',
-      frequencia: 'Sábado',
-      titulo: 'Conexão Jovem',
-      horario: '19:30H',
-      descricao:
-        'Culto vibrante da juventude com louvor contemporâneo, comunhão e ministração bíblica prática direcionada aos jovens.',
       aberto: false,
     },
     {
@@ -198,36 +189,6 @@ export class InicioComponent implements OnInit, OnDestroy {
       destaque: true,
       aberto: false,
     },
-    {
-      data: '01',
-      mes: 'NOV',
-      frequencia: '1º Domingo do Mês',
-      titulo: 'Culto da Santa Ceia do Senhor',
-      horario: '19:00H',
-      descricao:
-        'Celebração solene em memória de Cristo: comunhão, renovação de aliança e gratidão pelo sacrifício da cruz.',
-      aberto: false,
-    },
-    {
-      data: '14',
-      mes: 'NOV',
-      frequencia: 'Sábado Especial',
-      titulo: 'Encontro de Casais: Famílias no Altar',
-      horario: '19:30H',
-      descricao:
-        'Uma noite edificante para fortalecer os laços conjugais segundo os princípios de Deus, com palestra temática e comunhão.',
-      aberto: false,
-    },
-    {
-      data: '27',
-      mes: 'NOV',
-      frequencia: 'Sexta para Sábado',
-      titulo: 'Grande Vigília da Unidade',
-      horario: '22:30H',
-      descricao:
-        'Madrugada inteira de clamor, adoração profunda e busca pelo avivamento espiritual na presença do Senhor.',
-      aberto: false,
-    },
   ];
 
   setAba(aba: 'horarios' | 'eventos'): void {
@@ -244,8 +205,11 @@ export class InicioComponent implements OnInit, OnDestroy {
 
   compartilharWhatsApp(titulo: string, horario: string, diaOuData: string, event: MouseEvent): void {
     event.stopPropagation();
-    const mensagem = `Paz do Senhor! Quero te convidar para o culto *${titulo}* na ADEV Grande Colorado!\n\n📅 ${diaOuData} às ${horario}\n📍 Local: ADEV Grande Colorado\n\nVenha adorar a Deus conosco!`;
+
+    const mensagem = `A paz do Senhor! 🙏\n\nQuero te convidar para o culto *${titulo}* na ADEV Grande Colorado!\n\n📅 ${diaOuData} às ${horario}\n📍 ADEV Grande Colorado\n\nVenha estar conosco para adorar ao Senhor!`;
+
     const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
+
     if (typeof window !== 'undefined') {
       window.open(url, '_blank');
     }

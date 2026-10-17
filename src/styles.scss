@@ -298,7 +298,8 @@ body {
 .card-padrao {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(14, 32, 50, 0.08);
+  box-shadow: 0 12px 36px rgba(14, 32, 50, 0.10), 0 2px 8px rgba(14, 32, 50, 0.04);
   padding: 2rem;
 
   img {
